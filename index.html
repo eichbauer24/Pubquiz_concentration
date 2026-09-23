@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Focus Trainer — People &amp; Topic</title>
+<meta name="description" content="Two-chapter pub quiz trainer: the people of the picture round, then the hard questions on concentration and focus.">
+<style>
+:root{
+  --bg:#f3f1f7; --surface:#fff; --ink:#1c2340; --muted:#5b6283;
+  --dusk:#2b3a67; --sky:#8fb3d9; --glow:#e7849a; --amber:#e9a54b;
+  --line:#dcd8e6; --good:#2f7d5b; --bad:#b53c52; --chip:#e6e2f0;
+  --font-h:ui-sans-serif,system-ui,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141a30; --surface:#1d2442; --ink:#eef0f8; --muted:#a9b0cf;
+  --dusk:#9db8e8; --sky:#5f7fb0; --glow:#f19bb0; --amber:#f0b863;
+  --line:#2f3860; --good:#6cc79c; --bad:#f08096; --chip:#28305a;
+}}
+:root[data-theme="dark"]{
+  --bg:#141a30; --surface:#1d2442; --ink:#eef0f8; --muted:#a9b0cf;
+  --dusk:#9db8e8; --sky:#5f7fb0; --glow:#f19bb0; --amber:#f0b863;
+  --line:#2f3860; --good:#6cc79c; --bad:#f08096; --chip:#28305a;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;
+  padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
+h1,h2,h3{font-family:var(--font-h);line-height:1.15;margin:0;letter-spacing:-.01em}
+h1{font-size:1.45rem}
+h2{font-size:1.3rem}
+p{margin:.5rem 0}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+header{background:linear-gradient(180deg,color-mix(in srgb,var(--sky) 30%,transparent),transparent);padding:18px 0 10px}
+header p{color:var(--muted);font-size:.95rem;margin:.2rem 0 0}
+nav{position:sticky;top:0;z-index:9;background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding:10px 16px;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+.btn{font:inherit;font-size:.93rem;border:1px solid var(--line);background:var(--chip);color:var(--ink);
+  border-radius:999px;padding:7px 14px;cursor:pointer;white-space:nowrap}
+.btn.primary{background:var(--dusk);color:var(--bg);border-color:var(--dusk)}
+.btn.good{border-color:var(--good);color:var(--good);background:transparent}
+.btn.bad{border-color:var(--bad);color:var(--bad);background:transparent}
+.btn:disabled{opacity:.55;cursor:default}
+main{padding:18px 0 40px}
+.view[hidden]{display:none}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;margin:14px 0}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.spread{justify-content:space-between}
+.muted{color:var(--muted);font-size:.9rem}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.pill{display:inline-block;font-size:.78rem;padding:2px 9px;border-radius:7px;background:var(--chip);color:var(--muted)}
+.q{font-family:var(--font-h);font-size:1.3rem;font-weight:700;margin:8px 0 12px}
+.a{font-size:1.06rem;background:color-mix(in srgb,var(--sky) 20%,var(--surface));border-radius:10px;padding:12px 14px;min-height:3em}
+.a.hidden{color:transparent;background:repeating-linear-gradient(45deg,var(--chip) 0 10px,transparent 10px 20px);user-select:none}
+.bar{height:7px;background:var(--chip);border-radius:7px;overflow:hidden;margin:14px 0 4px}
+.bar i{display:block;height:100%;background:var(--good);transition:width .3s}
+.list{margin:0;padding:0;list-style:none}
+.list li{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.list b{flex:none;min-width:12ch}
+details.card{padding:0}
+details summary{cursor:pointer;padding:14px 18px;font-family:var(--font-h);font-weight:700;list-style:none;
+  display:flex;justify-content:space-between}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";color:var(--glow)}
+details[open] summary::after{content:"\2013"}
+.photo{position:relative;width:100%;max-width:340px;margin:10px auto 4px;aspect-ratio:3/4;border-radius:14px;
+  overflow:hidden;background:var(--chip);display:flex;align-items:center;justify-content:center}
+.photo img{width:100%;height:100%;object-fit:cover;filter:blur(16px);transform:scale(1.06);
+  transition:filter .9s ease}
+.photo.sharp img{filter:blur(0)}
+.photo-ph{padding:18px;text-align:center;color:var(--muted);font-size:.9rem}
+.photo.nophoto{aspect-ratio:auto;min-height:90px}
+.credit{text-align:center;font-size:.78rem;color:var(--muted);margin-bottom:6px}
+.credit a{color:var(--muted)}
+footer{color:var(--muted);font-size:.85rem;padding:6px 0 30px}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <h1>Focus Trainer</h1>
+  <p>Chapter 1: the people of the picture round. Chapter 2: the hard questions on the theme.</p>
+</div></header>
+
+<nav aria-label="Chapters"><div class="wrap" id="nav"></div></nav>
+
+<main class="wrap">
+
+  <section class="view" id="view-people">
+    <h2>1 · People</h2>
+    <p class="muted">Photos load from Wikipedia and start out of focus. Say the name out loud, then sharpen and reveal.</p>
+    <div id="people-app"></div>
+    <details class="card">
+      <summary>Full list of people</summary>
+      <div style="padding:0 18px 14px"><ul class="list" id="people-list"></ul></div>
+    </details>
+  </section>
+
+  <section class="view" id="view-topic" hidden>
+    <h2>2 · Questions on the topic</h2>
+    <p class="muted">Answer out loud, then reveal. Chemistry, optics, Stranger Things, the Ford Focus, Mautner Markhof, attention psychology, games and recent news.</p>
+    <div id="topic-app"></div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <div class="row spread">
+    <span>Progress is saved in this browser only.</span>
+    <button class="btn" id="resetall">Reset progress</button>
+  </div>
+</footer>
+
+<script>
+/* ============ chapter 1: people ============ */
+/* [name, known for, group] */
+const PEOPLE=[
+["Millie Bobby Brown","plays Eleven in Stranger Things","Stranger Things","Millie Bobby Brown"],
+["David Harbour","plays Jim Hopper, Eleven's adoptive father","Stranger Things","David Harbour"],
+["Winona Ryder","plays Joyce Byers","Stranger Things","Winona Ryder"],
+["Finn Wolfhard","plays Mike Wheeler","Stranger Things","Finn Wolfhard"],
+["Noah Schnapp","plays Will Byers","Stranger Things","Noah Schnapp"],
+["Gaten Matarazzo","plays Dustin Henderson","Stranger Things","Gaten Matarazzo"],
+["Caleb McLaughlin","plays Lucas Sinclair","Stranger Things","Caleb McLaughlin"],
+["Sadie Sink","plays Max Mayfield, saved by a Kate Bush song","Stranger Things","Sadie Sink"],
+["Joe Keery","plays Steve Harrington","Stranger Things","Joe Keery"],
+["Maya Hawke","plays Robin Buckley","Stranger Things","Maya Hawke"],
+["Natalia Dyer","plays Nancy Wheeler","Stranger Things","Natalia Dyer"],
+["Jamie Campbell Bower","plays Vecna, alias Henry Creel","Stranger Things","Jamie Campbell Bower"],
+["Joseph Quinn","plays Eddie Munson, who plays Metallica in the Upside Down","Stranger Things","Joseph Quinn (actor)"],
+["Linda Hamilton","the Terminator star who joined as Dr. Kay in season 5","Stranger Things","Linda Hamilton"],
+["Matthew Modine","plays Dr. Martin Brenner, called Papa","Stranger Things","Matthew Modine"],
+["Matt and Ross Duffer","the twin brothers who created Stranger Things","Stranger Things","Duffer Brothers"],
+["Jake Bongiovi","Millie Bobby Brown's husband, son of Jon Bon Jovi","Stranger Things","Jake Bongiovi"],
+
+["Magnus Carlsen","Norwegian grandmaster and long-time chess world number one","Concentration sport","Magnus Carlsen"],
+["Gukesh Dommaraju","became the youngest undisputed chess world champion in 2024","Concentration sport","Gukesh Dommaraju"],
+["Javokhir Sindarov","Uzbek grandmaster who won the 2026 Candidates","Concentration sport","Javokhir Sindarov"],
+["Garry Kasparov","lost to the computer Deep Blue in 1997","Concentration sport","Garry Kasparov"],
+["Judit Polgar","the strongest female chess player in history","Concentration sport","Judit Polgár"],
+["Ronnie O'Sullivan","seven-time snooker world champion, made the fastest 147","Concentration sport","Ronnie O'Sullivan"],
+["Wu Yize","won the 2026 world snooker championship 18-17","Concentration sport","Wu Yize"],
+["Luke Littler","darts world champion in 2025 and 2026","Concentration sport","Luke Littler"],
+["Gian van Veen","Dutch darts player, beaten in the 2026 world final","Concentration sport","Gian van Veen"],
+["Phil Taylor","won sixteen darts world titles, nicknamed The Power","Concentration sport","Phil Taylor (darts player)"],
+["Michael van Gerwen","Dutch darts player known as Mighty Mike","Concentration sport","Michael van Gerwen"],
+["Johannes Thingnes Boe","Norwegian biathlete, the most successful of his era","Concentration sport","Johannes Thingnes Bø"],
+["Lisa Vittozzi","won Italy's first Olympic biathlon pursuit gold in 2026","Concentration sport","Lisa Vittozzi"],
+["Franziska Preuss","German biathlete who ended her career at the 2026 Games","Concentration sport","Franziska Preuß"],
+["Alex Honnold","climbed El Capitan without a rope, in the film Free Solo","Concentration sport","Alex Honnold"],
+["Philippe Petit","walked a tightrope between the Twin Towers in 1974","Concentration sport","Philippe Petit"],
+["Simone Biles","gymnast who spoke publicly about losing her air awareness","Concentration sport","Simone Biles"],
+["Tiger Woods","golfer famous for his focus over the ball","Concentration sport","Tiger Woods"],
+["Uri Geller","claimed to bend spoons with the power of his mind","Concentration sport","Uri Geller"],
+
+["Amedeo Avogadro","the constant for the number of particles in a mole","Science","Amedeo Avogadro"],
+["Carl Zeiss","founded the optics workshop in Jena in 1846","Science","Carl Zeiss"],
+["Ernst Abbe","worked out the physics of the microscope with Zeiss","Science","Ernst Abbe"],
+["Joseph von Fraunhofer","the dark lines in the solar spectrum bear his name","Science","Joseph von Fraunhofer"],
+["Isaac Newton","split white light with a prism and built a reflecting telescope","Science","Isaac Newton"],
+["Ibn al-Haytham","medieval scholar who founded the science of optics","Science","Ibn al-Haytham"],
+["Johannes Kepler","showed the Sun sits at one focus of each planet's orbit","Science","Johannes Kepler"],
+["Henry Ford","car maker behind the Model T and the assembly line","Science","Henry Ford"],
+["Adolf Ignaz Mautner","founded the Viennese firm behind the syrup in 1841","Science","Adolf Ignaz Mautner von Markhof"],
+["William Hurter","the Swiss diplomat who brought Memory to Ravensburger","Science"],
+
+["Maria Montessori","doctor and educator who described children's deep concentration","Attention research","Maria Montessori"],
+["Mihaly Csikszentmihalyi","psychologist who named the state of flow","Attention research","Mihaly Csikszentmihalyi"],
+["Daniel Kahneman","wrote Thinking, Fast and Slow","Attention research","Daniel Kahneman"],
+["John Ridley Stroop","gave his name to the colour-word test of 1935","Attention research","John Ridley Stroop"],
+["Rolf Brickenkamp","created the d2 attention test in 1962","Attention research","Rolf Brickenkamp"],
+["Colin Cherry","described the cocktail party effect in 1953","Attention research","Colin Cherry"],
+["Simons and Chabris","ran the invisible gorilla experiment","Attention research","Christopher Chabris"],
+["Francesco Cirillo","invented the Pomodoro technique with a tomato timer","Attention research"],
+["Jon Kabat-Zinn","founded the MBSR mindfulness programme in 1979","Attention research","Jon Kabat-Zinn"],
+["Cal Newport","wrote Deep Work","Attention research","Cal Newport"],
+["George Miller","the magical number seven, plus or minus two","Attention research","George Armitage Miller"],
+["Rudyard Kipling","his novel gave its name to Kim's game","Attention research","Rudyard Kipling"],
+
+["Will Smith","stars with Margot Robbie in the 2015 film Focus","Pop culture","Will Smith"],
+["Margot Robbie","the con artist opposite Will Smith in Focus","Pop culture","Margot Robbie"],
+["Ariana Grande","released the single Focus in 2015","Pop culture","Ariana Grande"],
+["H.E.R.","released her own song called Focus in 2016","Pop culture","H.E.R."],
+["Kate Bush","her Running Up That Hill returned to number one thanks to Stranger Things","Pop culture","Kate Bush"],
+["Thijs van Leer","the yodelling frontman of the Dutch band Focus","Pop culture","Thijs van Leer"],
+["Eminem","Lose Yourself, the one-shot anthem from 8 Mile","Pop culture","Eminem"],
+["Helmut Markwort","founding editor of FOCUS magazine","Pop culture","Helmut Markwort"],
+["Juan Pablo Machado","the Colombian artist who drew Lofi Girl","Pop culture"],
+["Benedict Cumberbatch","plays a Sherlock who retreats into his mind palace","Pop culture","Benedict Cumberbatch"],
+["Henry Cavill","plays Sherlock Holmes alongside Millie Bobby Brown","Pop culture","Henry Cavill"],
+["Louis Partridge","plays Lord Tewkesbury in the Enola Holmes films","Pop culture"]
+];
+
+/* ============ chapter 2: the topic ============ */
+/* [category, question, answer] */
+const TOPIC=[
+["Hint","In c = n/V, what does n stand for?","Amount of substance, in mol"],
+["Hint","What is the unit of molar concentration?","mol/L, written M"],
+["Hint","Which car model is shown in the hint?","Ford Focus"],
+["Hint","Where and when was the last Ford Focus built?","Saarlouis, Germany, 14 November 2025"],
+["Hint","Which car did the Focus replace in 1998?","Ford Escort"],
+["Hint","Which Viennese brand makes the syrup in the hint?","Mautner Markhof"],
+["Hint","In what year was Mautner Markhof founded?","1841"],
+["Hint","Which Viennese district is Mautner Markhof based in?","Simmering"],
+["Hint","Which German mustard maker owns Mautner Markhof?","Develey"],
+["Hint","What was the Lofi Girl channel called before 2021?","ChilledCow"],
+["Hint","Which Studio Ghibli film supplied the original study-girl loop?","Whisper of the Heart, 1995"],
+["Hint","What is the German word for a focal point?","Brennpunkt"],
+["Hint","What is the German word for concentration?","Konzentration"],
+
+["Stranger Things","In which fictional town is the series set?","Hawkins, Indiana"],
+["Stranger Things","What number is tattooed on Eleven's wrist?","011"],
+["Stranger Things","What is Eleven's birth name?","Jane Ives, later Jane Hopper"],
+["Stranger Things","Which breakfast food does Eleven love?","Eggo waffles"],
+["Stranger Things","Which Kate Bush song saves Max from Vecna?","Running Up That Hill"],
+["Stranger Things","Which Metallica song does Eddie play in the Upside Down?","Master of Puppets"],
+["Stranger Things","When was the series finale released?","31 December 2025"],
+["Stranger Things","What is the final episode called?","The Rightside Up"],
+["Stranger Things","Which game gives the Demogorgon its name?","Dungeons & Dragons"],
+["Stranger Things","What helps Eleven concentrate enough to find people with her mind?","A sensory deprivation tank"],
+["Stranger Things","Which ice cream parlour does Steve work at in season 3?","Scoops Ahoy"],
+["Stranger Things","What is the parallel world called?","The Upside Down"],
+["Stranger Things","Which mall is central to season 3?","Starcourt Mall"],
+["Stranger Things","What is Kali's number?","Eight"],
+["Stranger Things","Which animated spin-off arrived in April 2026?","Stranger Things: Tales From '85"],
+["Stranger Things","How many episodes does the first season of the spin-off have?","Ten"],
+
+["Chemistry","Which law links absorbance to concentration?","The Beer-Lambert law"],
+["Chemistry","Molarity or molality: which ignores temperature?","Molality, in mol per kg of solvent"],
+["Chemistry","What is the dilution formula?","c1 V1 = c2 V2"],
+["Chemistry","What is the exact value of the Avogadro constant?","6.02214076 x 10^23 per mol"],
+["Chemistry","Roughly how much salt does seawater contain?","About 35 g per kg, or 3.5 percent"],
+["Chemistry","How much U-235 is in natural uranium?","About 0.7 percent"],
+["Chemistry","What is the blood alcohol limit for regular drivers in Austria?","0.5 per mille"],
+["Chemistry","What does pH measure?","The hydronium concentration, as its negative logarithm"],
+["Chemistry","What is uranium ore concentrate called?","Yellowcake"],
+["Chemistry","What does ppm stand for?","Parts per million"],
+["Chemistry","The mole is the SI unit of what?","Amount of substance"],
+["Chemistry","What does a C30 dilution in homeopathy mean?","Diluted one to a hundred, thirty times over"],
+["Chemistry","What is the salt content of physiological saline?","0.9 percent sodium chloride"],
+["Chemistry","Roughly how much acetic acid is in table vinegar?","About 5 percent"],
+["Chemistry","What is a solution called that can take no more solute?","Saturated"],
+["Chemistry","Which gas makes up about 78 percent of air?","Nitrogen"],
+["Chemistry","Which process concentrates fruit juice for transport?","Evaporation, removing the water"],
+["Chemistry","What does a hydrometer measure?","The density of a liquid"],
+
+["Optics","What did the Latin word focus originally mean?","Hearth or fireplace"],
+["Optics","What is one divided by the focal length in metres called?","The diopter"],
+["Optics","What was the first mass-produced autofocus camera?","The Konica C35 AF, 1977"],
+["Optics","Which company built its autofocus system?","Honeywell, called Visitronic"],
+["Optics","What is the underground origin of an earthquake called?","The focus, or hypocentre"],
+["Optics","How many foci does an ellipse have?","Two"],
+["Optics","Which Japanese word describes out-of-focus blur?","Bokeh"],
+["Optics","Which telescope launched in 1990 unable to focus sharply?","The Hubble Space Telescope"],
+["Optics","Which SLR of 1985 first had autofocus in the body?","The Minolta 7000"],
+["Optics","Which lens shape converges light?","A convex, or converging, lens"],
+["Optics","Which lens corrects short-sightedness?","A concave, or diverging, lens"],
+["Optics","What does SLR stand for?","Single-lens reflex"],
+["Optics","What is the point of sharpest vision on the retina called?","The fovea"],
+["Optics","What does the word laser stand for?","Light amplification by stimulated emission of radiation"],
+["Optics","What are the mirrors called that concentrate sunlight on a solar tower?","Heliostats"],
+["Optics","Which German town is home to Leica?","Wetzlar"],
+["Optics","In which city was Carl Zeiss founded in 1846?","Jena"],
+
+["Psychology","Who described the Stroop effect, and when?","John Ridley Stroop, 1935"],
+["Psychology","In the d2 test, which character do you cross out?","Every d with exactly two dashes"],
+["Psychology","Who described the cocktail party effect?","Colin Cherry, 1953"],
+["Psychology","Which animal walks through the famous attention video?","A gorilla"],
+["Psychology","What does pomodoro mean?","Tomato"],
+["Psychology","How long is one classic Pomodoro session?","25 minutes, then a 5-minute break"],
+["Psychology","Which law says performance peaks at medium arousal?","The Yerkes-Dodson law, 1908"],
+["Psychology","What does ADHD stand for?","Attention deficit hyperactivity disorder"],
+["Psychology","What is the magical number for short-term memory?","Seven, plus or minus two"],
+["Psychology","What is it called when you miss a change in a scene?","Change blindness"],
+["Psychology","What is the general name for a strike-out test?","A cancellation test"],
+["Psychology","What is the penalty for jumping between tasks called?","Task switching cost"],
+
+["Games & sport","What is the English name of the game Memory, besides Pairs?","Concentration"],
+["Games & sport","In which year did Ravensburger's Memory appear?","1959"],
+["Games & sport","What is the maximum break in snooker?","147"],
+["Games & sport","What is the highest score with three darts?","180"],
+["Games & sport","How long is the biathlon penalty loop?","150 metres"],
+["Games & sport","Which computer beat Kasparov in 1997?","Deep Blue"],
+["Games & sport","How far is the darts throwing line from the board?","2.37 metres"],
+["Games & sport","How many balls are on a snooker table at the start?","22"],
+["Games & sport","What is the bullseye worth in darts?","50"],
+["Games & sport","Which calibre do biathletes shoot?",".22 long rifle"],
+["Games & sport","How many squares does a chessboard have?","64"],
+["Games & sport","Which theatre has hosted the snooker worlds since 1977?","The Crucible in Sheffield"],
+["Games & sport","How many rings does an archery target have?","Ten"],
+
+["Music & media","Which Dutch band recorded Hocus Pocus?","Focus"],
+["Music & media","Besides Hocus Pocus, which instrumental hit did Focus have?","Sylvia"],
+["Music & media","Who released the single Focus in 2015?","Ariana Grande"],
+["Music & media","In which year was FOCUS magazine founded?","1993"],
+["Music & media","Which Marconi Union track is called the most relaxing song?","Weightless"],
+["Music & media","Which 1972 Johnny Nash hit is about seeing clearly?","I Can See Clearly Now"],
+["Music & media","Which film features Eye of the Tiger?","Rocky III"],
+["Music & media","Lose Yourself comes from which film?","8 Mile"],
+["Music & media","Running Up That Hill comes from which album?","Hounds of Love"],
+["Music & media","In which year did Metallica release Master of Puppets?","1986"],
+
+["Recent","Who won the 2026 darts world championship?","Luke Littler, 7-1 against Gian van Veen"],
+["Recent","How much did the 2026 darts world champion win?","One million pounds"],
+["Recent","Who won the 2026 world snooker championship?","Wu Yize, 18-17 against Shaun Murphy"],
+["Recent","Who challenges Gukesh for the chess title in 2026, and where?","Javokhir Sindarov, in Geneva"],
+["Recent","Where were the 2026 Olympic biathlon races held?","Antholz, or Anterselva, in South Tyrol"],
+["Recent","Which cities hosted the 2026 Winter Olympics?","Milan and Cortina d'Ampezzo"],
+["Recent","Which country won the Olympic biathlon mixed relay in 2026?","France"],
+["Recent","Since when are phones banned in Austrian schools up to 8th grade?","1 May 2025"],
+["Recent","Which country banned social media for under-16s in December 2025?","Australia"],
+["Recent","Which minimum age for social media is Austria planning?","Fourteen"],
+["Recent","In which country is Enola Holmes 3 set?","Malta"],
+["Recent","What was Oxford's word of the year 2024?","Brain rot"]
+];
+
+const TCARDS=TOPIC.map(function(t){return [t[0],t[1],t[2],t[2]];});
+
+/* ============ engine ============ */
+const KEY="focus-trainer-v2";
+let S={};try{const r=localStorage.getItem(KEY);if(r)S=JSON.parse(r);}catch(e){}
+const save=function(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}};
+const shuffle=function(a){return a.map(function(v){return [Math.random(),v];})
+  .sort(function(x,y){return x[0]-y[0];}).map(function(v){return v[1];});};
+
+function Chapter(id,cards,mount){
+  const box=function(i){return (S[id]&&S[id][i])||1;};
+  const setBox=function(i,v){S[id]=S[id]||{};S[id][i]=v;save();};
+  let cat="All",deck=[],pos=0;
+  const cats=["All"].concat(cards.map(function(c){return c[0];})
+    .filter(function(v,i,a){return a.indexOf(v)===i;}));
+  const inCat=function(i){return cat==="All"||cards[i][0]===cat;};
+
+  function build(){
+    const idxs=cards.map(function(_,i){return i;}).filter(inCat);
+    const w=[];idxs.forEach(function(i){const reps=6-Math.min(box(i),5);for(let k=0;k<reps;k++)w.push(i);});
+    deck=shuffle(w);pos=0;
+  }
+  function catRow(){
+    const row=document.createElement("div");row.className="row";
+    cats.forEach(function(c){
+      const b=document.createElement("button");b.className="btn"+(c===cat?" primary":"");b.textContent=c;
+      b.onclick=function(){cat=c;build();render();};
+      row.appendChild(b);
+    });
+    return row;
+  }
+  function render(){
+    mount.innerHTML="";
+    if(!deck.length)build();
+    const card=document.createElement("div");card.className="card";mount.appendChild(card);
+    const pool=cards.map(function(_,j){return j;}).filter(inCat);
+    const i=deck[pos%deck.length];
+    const learned=pool.filter(function(j){return box(j)>=4;}).length;
+    const head=document.createElement("div");head.className="row spread";
+    head.innerHTML='<span class="pill">'+cards[i][0]+' \u00b7 box '+box(i)+'</span>'+
+      '<span class="muted">'+learned+' of '+pool.length+' in box 4+</span>';
+    const q=document.createElement("div");q.className="q";q.textContent=cards[i][1];
+    const a=document.createElement("div");a.className="a hidden";a.textContent=cards[i][2];
+    const row=document.createElement("div");row.className="row";row.style.marginTop="12px";
+    const bar=document.createElement("div");bar.className="bar";
+    bar.innerHTML='<i style="width:'+(pool.length?learned/pool.length*100:0)+'%"></i>';
+    const mk=function(label,cls,fn){const b=document.createElement("button");b.className="btn "+cls;
+      b.textContent=label;b.onclick=fn;row.appendChild(b);};
+    mk("Reveal","primary",function(){a.classList.remove("hidden");});
+    mk("Knew it","good",function(){setBox(i,Math.min(box(i)+1,5));pos++;if(pos%12===0)build();render();});
+    mk("Missed it","bad",function(){setBox(i,1);pos++;render();});
+    mk("Skip","",function(){pos++;render();});
+    card.append(head,q,a,row,bar);
+    mount.appendChild(catRow());
+  }
+  build();render();
+  return {reset:function(){S[id]={};save();build();render();}};
+}
+
+/* ============ photo helper (Wikipedia REST, cached) ============ */
+const IMGKEY="focus-trainer-img";
+let IMG={};try{const r=localStorage.getItem(IMGKEY);if(r)IMG=JSON.parse(r);}catch(e){}
+const imgSave=function(){try{localStorage.setItem(IMGKEY,JSON.stringify(IMG));}catch(e){}};
+function wikiPhoto(title){
+  if(!title)return Promise.resolve(null);
+  if(IMG[title]!==undefined)return Promise.resolve(IMG[title]);
+  const langs=["en","de"];
+  const tryLang=function(k){
+    if(k>=langs.length){IMG[title]=null;imgSave();return null;}
+    return fetch("https://"+langs[k]+".wikipedia.org/api/rest_v1/page/summary/"+
+        encodeURIComponent(title)+"?redirect=true")
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(j){
+        const src=j&&((j.originalimage&&j.originalimage.width<=2000&&j.originalimage.source)||
+                      (j.thumbnail&&j.thumbnail.source));
+        if(src){const rec={src:src,page:j.content_urls&&j.content_urls.desktop&&j.content_urls.desktop.page};
+          IMG[title]=rec;imgSave();return rec;}
+        return tryLang(k+1);
+      })
+      .catch(function(){return tryLang(k+1);});
+  };
+  return tryLang(0);
+}
+
+/* ============ chapter 1: people, as photo flashcards ============ */
+function PeopleChapter(mount){
+  const id="people";
+  const box=function(i){return (S[id]&&S[id][i])||1;};
+  const setBox=function(i,v){S[id]=S[id]||{};S[id][i]=v;save();};
+  let cat="All",deck=[],pos=0;
+  const cats=["All"].concat(PEOPLE.map(function(p){return p[2];})
+    .filter(function(v,i,a){return a.indexOf(v)===i;}));
+  const inCat=function(i){return cat==="All"||PEOPLE[i][2]===cat;};
+
+  function build(){
+    const idxs=PEOPLE.map(function(_,i){return i;}).filter(inCat);
+    const w=[];idxs.forEach(function(i){const reps=6-Math.min(box(i),5);for(let k=0;k<reps;k++)w.push(i);});
+    deck=shuffle(w);pos=0;
+  }
+  function catRow(){
+    const row=document.createElement("div");row.className="row";
+    cats.forEach(function(c){
+      const b=document.createElement("button");b.className="btn"+(c===cat?" primary":"");b.textContent=c;
+      b.onclick=function(){cat=c;build();render();};
+      row.appendChild(b);
+    });
+    return row;
+  }
+  function frame(i){
+    const wrapEl=document.createElement("div");wrapEl.className="photo";
+    const ph=document.createElement("div");ph.className="photo-ph";ph.textContent="loading photo\u2026";
+    wrapEl.appendChild(ph);
+    const credit=document.createElement("div");credit.className="credit";
+    wikiPhoto(PEOPLE[i][3]).then(function(rec){
+      if(!rec){ph.textContent="No photo available";wrapEl.classList.add("nophoto");return;}
+      const im=new Image();im.alt="Photo of a person to identify";im.decoding="async";
+      im.onload=function(){ph.remove();wrapEl.prepend(im);};
+      im.onerror=function(){ph.textContent="No photo available";wrapEl.classList.add("nophoto");};
+      im.src=rec.src;
+      if(rec.page)credit.innerHTML='<a href="'+rec.page+'" target="_blank" rel="noopener">Photo via Wikipedia</a>';
+    });
+    return {el:wrapEl,credit:credit,sharpen:function(){wrapEl.classList.add("sharp");}};
+  }
+  function render(){
+    mount.innerHTML="";
+    if(!deck.length)build();
+    const card=document.createElement("div");card.className="card";mount.appendChild(card);
+    const pool=PEOPLE.map(function(_,j){return j;}).filter(inCat);
+    const i=deck[pos%deck.length];
+    const learned=pool.filter(function(j){return box(j)>=4;}).length;
+    const head=document.createElement("div");head.className="row spread";
+    head.innerHTML='<span class="pill">'+PEOPLE[i][2]+' \u00b7 box '+box(i)+'</span>'+
+      '<span class="muted">'+learned+' of '+pool.length+' in box 4+</span>';
+    const q=document.createElement("div");q.className="q";q.textContent="Who is this?";
+    const f=frame(i);
+    const a=document.createElement("div");a.className="a hidden";
+    a.innerHTML="<b>"+PEOPLE[i][0]+"</b><br>"+PEOPLE[i][1].charAt(0).toUpperCase()+PEOPLE[i][1].slice(1);
+    const row=document.createElement("div");row.className="row";row.style.marginTop="12px";
+    const bar=document.createElement("div");bar.className="bar";
+    bar.innerHTML='<i style="width:'+(pool.length?learned/pool.length*100:0)+'%"></i>';
+    const mk=function(label,cls,fn){const b=document.createElement("button");b.className="btn "+cls;
+      b.textContent=label;b.onclick=fn;row.appendChild(b);};
+    mk("Sharpen","",function(){f.sharpen();});
+    mk("Reveal","primary",function(){f.sharpen();a.classList.remove("hidden");});
+    mk("Knew it","good",function(){setBox(i,Math.min(box(i)+1,5));pos++;if(pos%12===0)build();render();});
+    mk("Missed it","bad",function(){setBox(i,1);pos++;render();});
+    mk("Skip","",function(){pos++;render();});
+    card.append(head,q,f.el,f.credit,a,row,bar);
+    mount.appendChild(catRow());
+  }
+  build();render();
+  return {reset:function(){S[id]={};save();build();render();}};
+}
+
+/* chapters and navigation */
+const nav=document.getElementById("nav");
+const CH=[["people","1 \u00b7 People"],["topic","2 \u00b7 Topic questions"]];
+CH.forEach(function(c){
+  const b=document.createElement("button");b.className="btn";b.textContent=c[1];b.dataset.v=c[0];
+  b.onclick=function(){select(c[0]);};nav.appendChild(b);
+});
+function select(id){
+  CH.forEach(function(c){document.getElementById("view-"+c[0]).hidden=(c[0]!==id);});
+  nav.querySelectorAll("button").forEach(function(b){b.classList.toggle("primary",b.dataset.v===id);});
+  history.replaceState(null,"","#"+id);window.scrollTo(0,0);
+}
+
+const chPeople=PeopleChapter(document.getElementById("people-app"));
+const chTopic=Chapter("topic",TCARDS,document.getElementById("topic-app"));
+
+const plist=document.getElementById("people-list");
+PEOPLE.forEach(function(p){
+  const li=document.createElement("li");
+  const b=document.createElement("b");b.textContent=p[0];
+  const s=document.createElement("span");s.textContent=p[1];
+  li.append(b,s);plist.appendChild(li);
+});
+
+document.getElementById("resetall").onclick=function(){
+  if(!confirm("Delete all saved progress?"))return;
+  chPeople.reset();chTopic.reset();
+};
+
+select(CH.some(function(c){return c[0]===location.hash.slice(1);})?location.hash.slice(1):"people");
+</script>
+</body>
+</html>
