@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>In Focus: Prep for NarrenCastl Season 9, Quiz 4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f1f7; --surface:#ffffff; --ink:#1c2340; --muted:#5b6283;
+  --dusk:#2b3a67; --sky:#8fb3d9; --glow:#e7849a; --amber:#e9a54b;
+  --line:#dcd8e6; --good:#2f7d5b; --bad:#b53c52; --chip:#e6e2f0;
+  --shadow:0 1px 0 rgba(28,35,64,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141a30; --surface:#1d2442; --ink:#eef0f8; --muted:#a9b0cf;
+    --dusk:#9db8e8; --sky:#5f7fb0; --glow:#f19bb0; --amber:#f0b863;
+    --line:#2f3860; --good:#6cc79c; --bad:#f08096; --chip:#28305a;
+    --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141a30; --surface:#1d2442; --ink:#eef0f8; --muted:#a9b0cf;
+  --dusk:#9db8e8; --sky:#5f7fb0; --glow:#f19bb0; --amber:#f0b863;
+  --line:#2f3860; --good:#6cc79c; --bad:#f08096; --chip:#28305a;
+  --shadow:none;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:17px;line-height:1.6}
+h1,h2,h3{font-family:"Bricolage Grotesque","Atkinson Hyperlegible",system-ui,sans-serif;line-height:1.15;margin:0}
+h2{font-size:clamp(1.6rem,5vw,2.3rem);font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.15rem;font-weight:700;margin-top:1.6rem}
+p{margin:.6rem 0}
+a{color:var(--dusk)}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+
+/* hero: the one orchestrated moment, blur to sharp */
+.hero{padding:48px 0 28px;background:
+  radial-gradient(120% 80% at 50% 110%, color-mix(in srgb,var(--glow) 35%,transparent), transparent 60%),
+  linear-gradient(180deg, color-mix(in srgb,var(--sky) 30%,transparent), transparent)}
+.lens{width:132px;height:132px;border-radius:50%;margin:0 0 22px;
+  background:radial-gradient(circle at 50% 55%, var(--amber) 0 8%, var(--glow) 22%, var(--dusk) 58%, #0f1428 60%, #0f1428 68%, #3a4262 69%, #0f1428 74%, #59617f 75%, #0f1428 100%);
+  box-shadow:0 0 0 6px color-mix(in srgb,var(--ink) 10%,transparent)}
+.hero h1{font-size:clamp(2.6rem,11vw,4.6rem);font-weight:800;letter-spacing:-.02em;animation:focusin 1.6s ease-out both}
+.hero .sub{font-size:1.05rem;color:var(--muted);max-width:60ch;animation:focusin 1.6s .25s ease-out both}
+@keyframes focusin{from{filter:blur(14px);opacity:.3}to{filter:blur(0);opacity:1}}
+@media (prefers-reduced-motion: reduce){.hero h1,.hero .sub{animation:none}}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;padding:0;list-style:none}
+.facts li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem}
+
+/* sticky nav */
+nav.toc{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav.toc .wrap{display:flex;gap:6px;overflow-x:auto;padding:10px 18px;scrollbar-width:none}
+nav.toc a{flex:none;text-decoration:none;color:var(--ink);background:var(--chip);padding:6px 12px;border-radius:999px;font-size:.92rem;white-space:nowrap}
+
+section{padding:40px 0 8px}
+.lead{color:var(--muted);max-width:62ch}
+
+/* clue decoder */
+.clues{display:grid;gap:10px;margin-top:18px}
+.clue{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--glow);border-radius:10px;padding:14px 16px;box-shadow:var(--shadow)}
+.clue b{font-family:"Bricolage Grotesque",sans-serif;font-size:1.05rem}
+.clue .ask{display:block;margin-top:6px;color:var(--muted);font-size:.95rem}
+
+/* fact lists */
+.facts-list{margin:.4rem 0 0;padding-left:1.1rem}
+.facts-list li{margin:.35rem 0}
+.tag{display:inline-block;font-size:.78rem;padding:1px 8px;border-radius:6px;background:var(--chip);color:var(--muted);vertical-align:middle;margin-left:4px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:10px;margin:10px 0;box-shadow:var(--shadow)}
+summary{cursor:pointer;padding:14px 16px;font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.08rem;list-style:none;display:flex;justify-content:space-between;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.3rem;line-height:1;color:var(--glow)}
+details[open] summary::after{content:"–"}
+details .body{padding:0 16px 14px}
+
+.table-scroll{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.95rem}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:"Bricolage Grotesque",sans-serif}
+
+.callout{background:color-mix(in srgb,var(--amber) 16%,var(--surface));border:1px solid color-mix(in srgb,var(--amber) 45%,var(--line));border-radius:10px;padding:12px 16px;margin:16px 0}
+
+/* flashcards */
+.fc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:16px;box-shadow:var(--shadow)}
+.fc-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:.9rem;color:var(--muted)}
+.fc-filter{display:flex;gap:6px;flex-wrap:wrap}
+.fc-filter button,.btn{font:inherit;border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
+.fc-filter button[aria-pressed="true"]{background:var(--dusk);color:var(--bg);border-color:var(--dusk)}
+.fc-q{font-family:"Bricolage Grotesque",sans-serif;font-size:1.35rem;font-weight:700;margin:18px 0 10px;min-height:3.2em}
+.fc-a{font-size:1.08rem;padding:12px 14px;border-radius:10px;background:color-mix(in srgb,var(--sky) 20%,var(--surface));min-height:3em}
+.fc-a.hidden{color:transparent;background:repeating-linear-gradient(45deg,var(--chip) 0 10px,transparent 10px 20px);user-select:none}
+.fc-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.btn.primary{background:var(--dusk);color:var(--bg);border-color:var(--dusk)}
+.btn.good{border-color:var(--good);color:var(--good);background:transparent}
+.btn.bad{border-color:var(--bad);color:var(--bad);background:transparent}
+.bar{height:6px;background:var(--chip);border-radius:6px;margin-top:14px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--good);width:0;transition:width .3s}
+
+/* drills */
+.drill{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:14px}
+.d2{display:flex;flex-wrap:wrap;gap:4px;margin:12px 0}
+.d2 button{font:700 1.2rem/1 "Atkinson Hyperlegible",monospace;width:34px;height:58px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:4px 0}
+.d2 button small{font-size:.7rem;letter-spacing:1px;line-height:1;height:.8rem}
+.d2 button.on{background:color-mix(in srgb,var(--glow) 35%,var(--bg));border-color:var(--glow)}
+.d2 button.hit{outline:2px solid var(--good)}
+.d2 button.miss{outline:2px solid var(--bad)}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:12px 0;max-width:420px}
+.grid button{font:700 1.05rem "Atkinson Hyperlegible",sans-serif;aspect-ratio:1;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;cursor:pointer}
+.grid button.done{background:color-mix(in srgb,var(--good) 30%,var(--bg));color:var(--muted)}
+.stroop{display:flex;flex-wrap:wrap;gap:6px 14px;font:800 1.25rem "Bricolage Grotesque",sans-serif;margin:12px 0;text-transform:uppercase}
+.result{font-weight:700;margin-top:6px}
+.passage{background:var(--bg);border-radius:8px;padding:12px;font-weight:700;letter-spacing:.02em}
+footer{padding:40px 0 60px;color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="lens" role="img" aria-label="A camera lens with a sunset in the glass"></div>
+    <h1>In focus</h1>
+    <p class="sub">Everything worth knowing for NarrenCastl's Season 9, Quiz 4. The hint points to one theme: concentration and focus. This page covers the hint, every round, and a self-test you can drill until quiz night.</p>
+    <ul class="facts">
+      <li>Asked in English, answers in English or German</li>
+      <li>Starts 19:00</li>
+      <li>22, 23, 24, 30 Sep and 1, 2 Oct</li>
+    </ul>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <div class="wrap">
+    <a href="#hint">The hint</a>
+    <a href="#pictures">Picture round</a>
+    <a href="#hard">Hard questions</a>
+    <a href="#music">Music round</a>
+    <a href="#final">Final round</a>
+    <a href="#drill">Self-test</a>
+    <a href="#tactics">Team tactics</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="hint">
+  <h2>The hint, decoded</h2>
+  <p class="lead">NarrenCastl says each hint sets the evening's theme and points to one or two specific questions. So every picture below is a likely question on its own. Know each one cold.</p>
+  <div class="clues">
+    <div class="clue"><b>c = n / V</b> is molar concentration: amount of substance (mol) divided by volume (L).
+      <span class="ask">Likely asks: what do c, n and V stand for? What is the unit (mol/L, written M)?</span></div>
+    <div class="clue"><b>The camera lens</b> brings light to a focus.
+      <span class="ask">Likely asks: focal length, aperture, the German word Brennpunkt, the first autofocus camera.</span></div>
+    <div class="clue"><b>The red car</b> is a Ford Focus (third generation, facelifted sedan).
+      <span class="ask">Likely asks: name the model. When did production end? (Last one built 14 Nov 2025 in Saarlouis, Germany.)</span></div>
+    <div class="clue"><b>The girl</b> is Eleven from Stranger Things, played by Millie Bobby Brown. Her powers need intense concentration.
+      <span class="ask">Likely asks: actor's name, Eleven's real name (Jane), her tattoo (011), the series ending (31 Dec 2025).</span></div>
+    <div class="clue"><b>The bottle</b> is a Mautner Markhof berry syrup: a fruit concentrate from Vienna. The music notes on it may hint at the music round.
+      <span class="ask">Likely asks: name the Austrian brand. Syrup is a concentrate you dilute.</span></div>
+    <div class="clue"><b>The girl with headphones studying</b> stands for focus music, as made famous by Lofi Girl.
+      <span class="ask">Likely asks: what is the YouTube channel called? What was it called before (ChilledCow)?</span></div>
+  </div>
+  <div class="callout">The theme word could be phrased as <b>Concentration</b>, <b>Focus</b> or both. Expect wordplay on each: chemical concentration, mental concentration, the card game Concentration, focal points, Ford Focus, FOCUS magazine, the band Focus.</div>
+</section>
+
+<section id="pictures">
+  <h2>Picture round</h2>
+  <p class="lead">Printed photos, probably blurred or cropped to fit the theme. Look up a photo of every name you can't picture instantly.</p>
+
+  <details open><summary>Stranger Things</summary><div class="body">
+    <ul class="facts-list">
+      <li><b>Millie Bobby Brown</b> as Eleven</li>
+      <li><b>David Harbour</b> as Jim Hopper, Eleven's adoptive father</li>
+      <li><b>Winona Ryder</b> as Joyce Byers</li>
+      <li><b>Finn Wolfhard</b> (Mike), <b>Noah Schnapp</b> (Will), <b>Gaten Matarazzo</b> (Dustin), <b>Caleb McLaughlin</b> (Lucas)</li>
+      <li><b>Sadie Sink</b> (Max), <b>Joe Keery</b> (Steve), <b>Natalia Dyer</b> (Nancy), <b>Maya Hawke</b> (Robin)</li>
+      <li><b>Jamie Campbell Bower</b> as Vecna / Henry Creel</li>
+      <li><b>Joseph Quinn</b> as Eddie Munson, <b>Linda Hamilton</b> as Dr. Kay (season 5)</li>
+      <li><b>Matt and Ross Duffer</b>, the creators (twins)</li>
+      <li><b>Jake Bongiovi</b>, Millie Bobby Brown's husband (son of Jon Bon Jovi), and <b>Louis Partridge</b> and <b>Henry Cavill</b> from her <i>Enola Holmes</i> films</li>
+    </ul>
+  </div></details>
+
+  <details><summary>Masters of concentration</summary><div class="body">
+    <ul class="facts-list">
+      <li><b>Magnus Carlsen</b>, <b>Garry Kasparov</b>, <b>Judit Polgár</b> <span class="tag">chess</span></li>
+      <li><b>Gukesh Dommaraju</b> <span class="tag">world chess champion</span>, <b>Javokhir Sindarov</b> <span class="tag">challenger, Geneva, Nov–Dec 2026</span></li>
+      <li><b>Wu Yize</b> <span class="tag">snooker world champion 2026</span>, <b>Zhao Xintong</b> <span class="tag">2025</span></li>
+      <li><b>Ronnie O'Sullivan</b> <span class="tag">snooker, fastest 147</span></li>
+      <li><b>Luke Littler</b> <span class="tag">darts world champion 2025 and 2026</span>, <b>Gian van Veen</b>, <b>Phil Taylor</b>, <b>Michael van Gerwen</b></li>
+      <li><b>Lisa Vittozzi</b> <span class="tag">Olympic biathlon gold 2026, Antholz</span>, <b>Franziska Preuß</b> <span class="tag">retired after the 2026 Games</span></li>
+      <li><b>Johannes Thingnes Bø</b>, <b>Lisa Hauser</b> (Austria) <span class="tag">biathlon</span></li>
+      <li><b>Alex Honnold</b> <span class="tag">free solo climber</span>, <b>Philippe Petit</b> <span class="tag">Twin Towers tightrope, 1974</span></li>
+      <li><b>Tiger Woods</b> <span class="tag">golf</span>, <b>Simone Biles</b> <span class="tag">gymnastics, "the twisties"</span></li>
+      <li><b>Uri Geller</b> <span class="tag">spoon bending, "mind power", Eleven link</span></li>
+      <li><b>Benedict Cumberbatch</b> as Sherlock <span class="tag">mind palace</span></li>
+    </ul>
+  </div></details>
+
+  <details><summary>Science, psychology and study</summary><div class="body">
+    <ul class="facts-list">
+      <li><b>Amedeo Avogadro</b> <span class="tag">the mole</span></li>
+      <li><b>Carl Zeiss</b>, <b>Ernst Abbe</b>, <b>Joseph von Fraunhofer</b> <span class="tag">lenses and optics</span></li>
+      <li><b>Isaac Newton</b> and <b>Ibn al-Haytham</b> <span class="tag">optics pioneers</span></li>
+      <li><b>Johannes Kepler</b> <span class="tag">planets orbit with the Sun at one focus</span></li>
+      <li><b>Maria Montessori</b> <span class="tag">"polarisation of attention"</span></li>
+      <li><b>Mihaly Csikszentmihalyi</b> <span class="tag">flow</span></li>
+      <li><b>Daniel Kahneman</b> <span class="tag">attention and effort, Thinking, Fast and Slow</span></li>
+      <li><b>Francesco Cirillo</b> <span class="tag">Pomodoro technique</span></li>
+      <li><b>Jon Kabat-Zinn</b>, <b>Thich Nhat Hanh</b> <span class="tag">mindfulness</span></li>
+    </ul>
+  </div></details>
+
+  <details><summary>Pop culture and brands</summary><div class="body">
+    <ul class="facts-list">
+      <li><b>Will Smith</b> and <b>Margot Robbie</b> <span class="tag">film Focus, 2015</span></li>
+      <li><b>Ariana Grande</b> <span class="tag">song Focus, 2015</span>, <b>H.E.R.</b> <span class="tag">song Focus, 2016</span></li>
+      <li><b>Kate Bush</b> <span class="tag">Running Up That Hill</span></li>
+      <li><b>Thijs van Leer</b> <span class="tag">yodelling frontman of the band Focus</span></li>
+      <li><b>Henry Ford</b> <span class="tag">Ford founder, assembly line</span></li>
+      <li><b>Helmut Markwort</b> <span class="tag">founding editor of FOCUS magazine, 1993</span></li>
+      <li>Logos: Ford Blue Oval, Netflix, Ravensburger (Memory), Mautner Markhof, FOCUS, Zeiss, Leica, Canon, Nikon</li>
+      <li>Icons: Rodin's <i>The Thinker</i>, Lofi Girl, the Stranger Things title lettering</li>
+    </ul>
+  </div></details>
+</section>
+
+<section id="hard">
+  <h2>Hard questions: fact bank</h2>
+  <p class="lead">NarrenCastl writes for a European audience, so expect a mix of science, pop culture, geography and history. These are the facts most likely to surface.</p>
+
+  <details open><summary>Chemical concentration</summary><div class="body">
+    <ul class="facts-list">
+      <li><b>Molarity</b> c = n/V in mol/L (symbol M). <b>Molality</b> is mol per kg of solvent and doesn't change with temperature.</li>
+      <li><b>Mass concentration</b> in g/L; <b>ppm</b> = parts per million; <b>‰</b> = per mille.</li>
+      <li><b>Dilution:</b> c₁·V₁ = c₂·V₂.</li>
+      <li><b>pH</b> = −log₁₀ of the H₃O⁺ concentration. pH 7 neutral; each step is a factor of 10.</li>
+      <li><b>Beer–Lambert law:</b> absorbance A = ε·c·d. It's how photometers measure concentration.</li>
+      <li><b>Avogadro constant:</b> 6.02214076 × 10²³ per mol, exact since the 2019 SI redefinition.</li>
+      <li><b>Seawater:</b> about 35 g salt per kg (3.5%). The Dead Sea is roughly ten times saltier.</li>
+      <li><b>CO₂ in air:</b> over 420 ppm today, versus about 280 ppm before industrialisation.</li>
+      <li><b>Uranium:</b> natural 0.7% U-235, reactor fuel 3–5%, weapons grade about 90%. "Yellowcake" is uranium ore concentrate.</li>
+      <li><b>Blood alcohol limit in Austria:</b> 0.5‰, and 0.1‰ for probationary drivers.</li>
+      <li><b>Osmosis:</b> water moves toward the higher solute concentration.</li>
+      <li><b>Concentrated sulfuric acid</b> is about 98%. Always add acid to water, never water to acid.</li>
+    </ul>
+  </div></details>
+
+  <details><summary>Focus in optics, physics and geology</summary><div class="body">
+    <ul class="facts-list">
+      <li><b>Latin <i>focus</i></b> means hearth or fireplace. Kepler brought it into optics: the point where sunlight burns. Plural: foci.</li>
+      <li><b>German Brennpunkt</b> literally means "burning point".</li>
+      <li><b>Diopter</b> = 1 / focal length in metres. A +2 dpt lens has f = 50 cm.</li>
+      <li><b>f-number</b> = focal length ÷ aperture diameter. A smaller f-number means a bigger opening and shallower depth of field.</li>
+      <li><b>Bokeh</b> comes from Japanese <i>boke</i>, meaning blur or haze.</li>
+      <li><b>Ellipse:</b> two foci. Kepler's first law puts the Sun at one focus of each planet's orbit.</li>
+      <li><b>Earthquakes:</b> the focus (hypocentre) is underground; the epicentre is the point directly above it on the surface.</li>
+      <li><b>Eye:</b> the lens changes shape to focus (accommodation). Myopia = short-sighted, hyperopia = long-sighted, presbyopia = age-related loss of near focus.</li>
+      <li><b>First mass-produced autofocus camera:</b> Konica C35 AF, November 1977, using Honeywell's "Visitronic" system.</li>
+      <li><b>First SLR with autofocus built into the body:</b> Minolta 7000 (1985).</li>
+      <li><b>Hubble telescope</b> launched in 1990 with a flawed mirror that couldn't focus sharply; astronauts fixed it in 1993.</li>
+      <li><b>Leica</b> comes from Wetzlar (Leitz + camera); <b>Carl Zeiss</b> was founded in Jena in 1846.</li>
+    </ul>
+  </div></details>
+
+  <details><summary>Ford Focus</summary><div class="body">
+    <ul class="facts-list">
+      <li>Launched in <b>1998</b> as the replacement for the <b>Ford Escort</b>.</li>
+      <li><b>European Car of the Year 1999.</b></li>
+      <li>Four generations, roughly <b>12 million</b> sold worldwide.</li>
+      <li>The last Focus was built on <b>14 November 2025</b> in <b>Saarlouis</b>, Germany: a white five-door hatchback. No direct successor.</li>
+      <li>The last Focus ST was built in September 2025. Sporty versions: ST and RS.</li>
+      <li>Ford also dropped the Ka (2020), Mondeo (2022) and Fiesta (2023) in Europe.</li>
+      <li>Other Ford names: Model T (1908), Mustang, Capri, Kuga, Puma, Explorer.</li>
+    </ul>
+  </div></details>
+
+  <details><summary>Stranger Things</summary><div class="body">
+    <ul class="facts-list">
+      <li>Netflix, premiered <b>15 July 2016</b>. Set in <b>Hawkins, Indiana</b>, beginning November 1983.</li>
+      <li>Eleven's birth name is <b>Jane Ives</b>; Hopper adopts her as <b>Jane Hopper</b>. Tattoo: <b>011</b>. Favourite food: <b>Eggo waffles</b>.</li>
+      <li>Her powers are telekinesis and telepathy. Using them causes <b>nosebleeds</b>; a <b>sensory deprivation tank</b> helps her concentrate.</li>
+      <li>"Papa" is <b>Dr. Martin Brenner</b> (Matthew Modine). Kali is <b>Eight</b>. Henry Creel / Vecna is <b>One</b>.</li>
+      <li>The <b>Demogorgon</b> and <b>Vecna</b> are named after Dungeons &amp; Dragons. The kids' D&amp;D group is the <b>Hellfire Club</b>.</li>
+      <li>Season 3 centres on the <b>Starcourt Mall</b> (1985) and Steve's ice cream job at <b>Scoops Ahoy</b>.</li>
+      <li>Season 4: Max escapes Vecna with <b>Running Up That Hill</b> (Kate Bush, 1985), which went to UK number 1 in 2022. Eddie plays <b>Master of Puppets</b> in the Upside Down.</li>
+      <li>Season 5 is set in <b>autumn 1987</b> and came out in three parts: <b>26 Nov</b>, <b>25 Dec</b> and <b>31 Dec 2025</b>. The finale, "The Rightside Up", runs just over two hours and also played in cinemas.</li>
+      <li>Theme music by <b>Kyle Dixon and Michael Stein</b> of the band S U R V I V E. Title font: <b>ITC Benguiat</b>.</li>
+    </ul>
+  </div></details>
+
+  <details><summary>Mautner Markhof and concentrates</summary><div class="body">
+    <ul class="facts-list">
+      <li>Founded <b>1841</b> in Vienna by <b>Adolf Ignaz Mautner</b>, originally as the St. Marx brewery.</li>
+      <li>Mautner Markhof is credited with inventing industrial <b>press yeast</b> (the "Viennese process", 1846).</li>
+      <li>Known for <b>Kremser Senf</b> (sweet mustard), <b>Estragon Senf</b>, <b>Hesperiden Essig</b> (1927) and syrups.</li>
+      <li>First syrup launched in the early <b>1930s</b>. Based in <b>Vienna-Simmering</b>.</li>
+      <li>Owned by the Munich mustard maker <b>Develey</b> since the early 2000s.</li>
+      <li>A typical syrup is diluted about <b>1 part syrup to 7–10 parts water</b>. Juice "from concentrate" has water removed for transport and added back later.</li>
+      <li>Tomato purée: <i>doppelt/dreifach konzentriert</i> (double/triple concentrated).</li>
+    </ul>
+  </div></details>
+
+  <details><summary>Lofi Girl and focus music</summary><div class="body">
+    <ul class="facts-list">
+      <li>Channel started by a French producer known as <b>Dimitri</b>, originally called <b>ChilledCow</b>. Renamed <b>Lofi Girl</b> in <b>2021</b>.</li>
+      <li>The stream "lofi hip hop radio – beats to relax/study to" first looped a scene of <b>Shizuku</b> from Studio Ghibli's <b>Whisper of the Heart</b> (1995), until a copyright takedown in 2017.</li>
+      <li>The Lofi Girl character was drawn by Colombian artist <b>Juan Pablo Machado</b>, a student in <b>Lyon</b>. She has a cat, headphones and a notebook.</li>
+      <li>Her companion stream features <b>Synthwave Boy</b>.</li>
+      <li><b>Lo-fi</b> means low fidelity: deliberate crackles and imperfections.</li>
+      <li><b>Weightless</b> by Marconi Union (2011) is often called "the most relaxing song ever".</li>
+    </ul>
+  </div></details>
+
+  <details><summary>Psychology of attention</summary><div class="body">
+    <ul class="facts-list">
+      <li><b>Stroop effect</b> (J. Ridley Stroop, 1935): naming the ink colour of a colour word is slow when they don't match.</li>
+      <li><b>d2 test</b> (Rolf Brickenkamp, 1962): cross out every "d" with two dashes. Originally for driver assessment. 14 rows × 47 characters = 658.</li>
+      <li><b>Cocktail party effect</b> (Colin Cherry, 1953): focusing on one voice among many.</li>
+      <li><b>Invisible gorilla</b> (Simons and Chabris, 1999): about half of viewers counting basketball passes miss a person in a gorilla suit. Ig Nobel Prize 2004.</li>
+      <li><b>Flow</b>: Mihaly Csikszentmihalyi's state of total absorption.</li>
+      <li><b>Pomodoro</b>: Francesco Cirillo, late 1980s. 25 minutes work, 5 minutes break; <i>pomodoro</i> is Italian for tomato, after his kitchen timer.</li>
+      <li><b>Yerkes–Dodson law</b> (1908): performance peaks at medium arousal.</li>
+      <li><b>Kim's game</b> (memorise objects on a tray) comes from Rudyard Kipling's novel <i>Kim</i> (1901).</li>
+      <li>The "goldfish attention span of 8 seconds" is a myth.</li>
+      <li><b>Caffeine</b> keeps you alert by blocking adenosine receptors.</li>
+    </ul>
+  </div></details>
+
+  <details><summary>Concentration games and sport</summary><div class="body">
+    <ul class="facts-list">
+      <li><b>Memory</b> (Ravensburger): invented by Swiss diplomat <b>William Hurter</b>, first shipped <b>15 April 1959</b> for 4.80 DM. English names: <b>Concentration</b>, <b>Pelmanism</b>, <b>Pairs</b>. A Japanese ancestor: <i>kai-awase</i> (shell matching).</li>
+      <li><b>Concentration</b> was also a long-running US TV game show on NBC (1958–1973).</li>
+      <li><b>Biathlon:</b> five targets per shoot; prone targets 4.5 cm, standing 11.5 cm; a miss usually means a 150 m penalty loop.</li>
+      <li><b>Darts:</b> maximum score 180; board centre 1.73 m high; throw line 2.37 m away; games from 501.</li>
+      <li><b>Snooker:</b> maximum break 147. Ronnie O'Sullivan's fastest 147 took 5 min 8 s (1997).</li>
+      <li><b>Chess:</b> Deep Blue beat Kasparov in 1997.</li>
+      <li>Other steady-hand games: <b>Jenga</b>, <b>Operation</b>, <b>Mikado</b>.</li>
+    </ul>
+  </div></details>
+
+
+  <details><summary>New since 2025: likely "recent" questions</summary><div class="body">
+    <ul class="facts-list">
+      <li><b>Stranger Things: Tales From '85</b>: animated spin-off, all 10 episodes out on Netflix since <b>23 April 2026</b>. Set in winter 1985, between seasons 2 and 3. New character: <b>Nikki Baxter</b>. Renewed for a second season.</li>
+      <li><b>Millie Bobby Brown</b> married <b>Jake Bongiovi</b> in May 2024; they adopted a baby girl in 2025. <b>Enola Holmes 3</b> (set in Malta) came out on Netflix on <b>1 July 2026</b>.</li>
+      <li><b>Darts:</b> Luke Littler beat Gian van Veen <b>7–1</b> in the 2026 world final and took the first-ever <b>£1 million</b> winner's cheque. First back-to-back champion since Gary Anderson (2016).</li>
+      <li><b>Snooker:</b> <b>Wu Yize</b> (China) beat Shaun Murphy <b>18–17</b> in the 2026 world final, aged 22. Ronnie O'Sullivan lost 13–12 to John Higgins in round two.</li>
+      <li><b>Chess:</b> <b>Javokhir Sindarov</b> (Uzbekistan) won the 2026 Candidates unbeaten; he plays <b>Gukesh</b> for the world title in <b>Geneva</b>, 24 Nov – 12 Dec 2026. The youngest title match ever.</li>
+      <li><b>Biathlon at Milano Cortina 2026</b> was held in <b>Antholz/Anterselva</b> (South Tyrol). Lisa Vittozzi won Italy's first pursuit gold; France won the mixed relay.</li>
+      <li><b>Attention and phones:</b> Austria banned phone use at school up to the <b>8th grade</b> from <b>1 May 2025</b>. Australia's social media ban for <b>under-16s</b> took effect in <b>December 2025</b>. Austria plans a minimum age of 14.</li>
+      <li><b>Ford:</b> no direct Focus successor; a Focus-sized crossover built in Valencia is expected around 2027.</li>
+      <li><b>Autofocus turns 50</b> in November 2027. Japan's <b>Camera Day (30 Nov)</b> marks the launch day of the Konica C35 AF.</li>
+      <li><b>"Brain rot"</b> was Oxford's Word of the Year 2024: the supposed decline of a person's mental state from too much trivial online content.</li>
+    </ul>
+  </div></details>
+  <details><summary>More "focus" and "eleven" wordplay</summary><div class="body">
+    <ul class="facts-list">
+      <li><b>FOCUS</b>: German news magazine from Munich, founded 1993 (Burda, editor Helmut Markwort).</li>
+      <li><b>Focus</b> (2015): con artist film with Will Smith and Margot Robbie.</li>
+      <li><b>Focus group</b>: sociologist Robert K. Merton is credited with the method.</li>
+      <li><b>iPhone Focus modes</b> arrived with iOS 15 (2021).</li>
+      <li><b>Eleven</b> links: Ocean's Eleven, Apollo 11, a football team, Spinal Tap's amp that "goes to eleven", 11 Nov carnival start (11:11).</li>
+      <li><b>Hocus Pocus</b> (1971) by the Dutch band Focus, famous for its yodelling.</li>
+    </ul>
+  </div></details>
+</section>
+
+<section id="music">
+  <h2>Music round</h2>
+  <p class="lead">The twist will match the theme, so it will make you concentrate. Know the likely formats and the songs they'd use.</p>
+
+  <h3>Likely twists</h3>
+  <ul class="facts-list">
+    <li><b>Two or three songs at once</b> (cocktail party effect). The strongest bet.</li>
+    <li><b>Out of focus</b>: muffled, underwater or low-pass filtered audio that slowly gets clearer.</li>
+    <li><b>Concentrated</b>: songs squeezed into a few seconds, sped up, or only the intro.</li>
+    <li><b>Lo-fi versions</b>: famous pop songs remade as chilled study beats.</li>
+    <li><b>Distraction</b>: a spoken voice or second task running over the music.</li>
+    <li><b>Detail listening</b>: count how often a word is sung, or name an instrument.</li>
+  </ul>
+
+  <h3>Songs to recognise from any angle</h3>
+  <div class="table-scroll"><table>
+    <thead><tr><th>Song</th><th>Artist</th><th>Year</th><th>Link to theme</th></tr></thead>
+    <tbody>
+      <tr><td>Focus</td><td>Ariana Grande</td><td>2015</td><td>Title</td></tr>
+      <tr><td>Focus</td><td>H.E.R.</td><td>2016</td><td>Title</td></tr>
+      <tr><td>Hocus Pocus</td><td>Focus</td><td>1971</td><td>Band name</td></tr>
+      <tr><td>Concentrate</td><td>Demi Lovato</td><td>2017</td><td>Title</td></tr>
+      <tr><td>Tunnel Vision</td><td>Justin Timberlake</td><td>2013</td><td>Narrow focus</td></tr>
+      <tr><td>I Can See Clearly Now</td><td>Johnny Nash</td><td>1972</td><td>Sharp focus</td></tr>
+      <tr><td>Blurred Lines</td><td>Robin Thicke</td><td>2013</td><td>Out of focus</td></tr>
+      <tr><td>Clarity</td><td>Zedd ft. Foxes</td><td>2012</td><td>Sharp focus</td></tr>
+      <tr><td>Hypnotize</td><td>System of a Down / The Notorious B.I.G.</td><td>2005 / 1997</td><td>Trance-like focus</td></tr>
+      <tr><td>Mind Games</td><td>John Lennon</td><td>1973</td><td>Mind</td></tr>
+      <tr><td>Under Pressure</td><td>Queen &amp; David Bowie</td><td>1981</td><td>Pressure</td></tr>
+      <tr><td>Eye of the Tiger</td><td>Survivor</td><td>1982</td><td>Determination</td></tr>
+      <tr><td>Lose Yourself</td><td>Eminem</td><td>2002</td><td>"One shot" focus</td></tr>
+      <tr><td>Can't Stop</td><td>Red Hot Chili Peppers</td><td>2002</td><td>Drive</td></tr>
+      <tr><td>Weightless</td><td>Marconi Union</td><td>2011</td><td>Relaxation music</td></tr>
+      <tr><td>Clair de Lune</td><td>Debussy</td><td>1905</td><td>Classic study music</td></tr>
+      <tr><td>Running Up That Hill</td><td>Kate Bush</td><td>1985</td><td>Stranger Things</td></tr>
+      <tr><td>Should I Stay or Should I Go</td><td>The Clash</td><td>1982</td><td>Stranger Things</td></tr>
+      <tr><td>Master of Puppets</td><td>Metallica</td><td>1986</td><td>Stranger Things</td></tr>
+      <tr><td>The NeverEnding Story</td><td>Limahl</td><td>1984</td><td>Stranger Things</td></tr>
+      <tr><td>Heroes</td><td>David Bowie (Peter Gabriel cover in the show)</td><td>1977</td><td>Stranger Things</td></tr>
+      <tr><td>Raspberry Beret</td><td>Prince</td><td>1985</td><td>Berry syrup, speculative</td></tr>
+      <tr><td>Strawberry Fields Forever</td><td>The Beatles</td><td>1967</td><td>Berry syrup, speculative</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout">Practise today: open two songs from this list on two phones at the same time and try to name both. Ten minutes of that is the best preparation for a mixed-song round.</div>
+</section>
+
+<section id="final">
+  <h2>Final round</h2>
+  <p class="lead">Past finals were hands-on tasks built around the theme, on paper. For concentration, these are the likely formats. Try the drills below.</p>
+  <ul class="facts-list">
+    <li><b>d2-style crossing out</b> under time pressure</li>
+    <li><b>Letter or symbol counting</b> in a paragraph or grid</li>
+    <li><b>Number search</b>: find 1 to 30 (or more) in order on a scattered sheet</li>
+    <li><b>Stroop table</b>: write down ink colours, not words</li>
+    <li><b>Spot the difference</b>, hidden objects, error hunt in a text</li>
+    <li><b>Memory</b>: a picture shown briefly, then questions</li>
+    <li><b>Dilution calculations</b> (c₁V₁ = c₂V₂), your specialty</li>
+  </ul>
+
+  <div class="drill" id="d2drill">
+    <h3 style="margin-top:0">Drill 1: d2 crossing out</h3>
+    <p>Tap every <b>d with exactly two dashes</b> (above and below combined). You have 20 seconds.</p>
+    <button class="btn primary" id="d2start">Start drill</button>
+    <div class="d2" id="d2board" aria-label="d2 practice row"></div>
+    <div class="result" id="d2result" aria-live="polite"></div>
+  </div>
+
+  <div class="drill">
+    <h3 style="margin-top:0">Drill 2: number search</h3>
+    <p>Tap 1 to 30 in order as fast as you can.</p>
+    <button class="btn primary" id="nsstart">Start drill</button>
+    <div class="grid" id="nsgrid"></div>
+    <div class="result" id="nsresult" aria-live="polite"></div>
+  </div>
+
+  <div class="drill">
+    <h3 style="margin-top:0">Drill 3: Stroop</h3>
+    <p>Say the <b>ink colour</b> of each word out loud, left to right. Time yourself, then shuffle and beat it.</p>
+    <button class="btn primary" id="stshuffle">Shuffle</button>
+    <div class="stroop" id="stroop"></div>
+  </div>
+
+  <div class="drill">
+    <h3 style="margin-top:0">Drill 4: letter count</h3>
+    <p>Count the letter F. Read once, no going back.</p>
+    <p class="passage">FINISHED FILES ARE THE RESULT OF YEARS OF SCIENTIFIC STUDY COMBINED WITH THE EXPERIENCE OF YEARS.</p>
+    <button class="btn" id="lcreveal">Show answer</button>
+    <div class="result" id="lcresult" aria-live="polite"></div>
+  </div>
+</section>
+
+<section id="drill">
+  <h2>Self-test</h2>
+  <p class="lead">Read the question, answer out loud, then reveal. Mark what you knew. Progress is saved in this browser, so you can come back to the ones you missed.</p>
+  <div class="fc">
+    <div class="fc-top">
+      <div class="fc-filter" id="fcfilter"></div>
+      <span id="fccount"></span>
+    </div>
+    <div class="fc-q" id="fcq"></div>
+    <div class="fc-a hidden" id="fca" aria-live="polite"></div>
+    <div class="fc-actions">
+      <button class="btn primary" id="fcreveal">Reveal answer</button>
+      <button class="btn good" id="fcknew">I knew it</button>
+      <button class="btn bad" id="fcmissed">Missed it</button>
+      <button class="btn" id="fcnext">Skip</button>
+    </div>
+    <div class="bar"><i id="fcbar"></i></div>
+    <div class="fc-actions"><button class="btn" id="fcmissedonly">Only cards I missed</button><button class="btn" id="fcreset">Reset progress</button></div>
+  </div>
+</section>
+
+<section id="tactics">
+  <h2>Team tactics</h2>
+  <ul class="facts-list">
+    <li><b>Assign specialists before the quiz:</b> science and chemistry (you), pop culture and TV, music, sport and cars.</li>
+    <li><b>Music round with mixed songs:</b> each person follows one layer: vocals, bassline, melody.</li>
+    <li><b>Paper tasks:</b> split the sheet, then swap and check. Use a card or ruler to cover finished rows.</li>
+    <li><b>Mark systematically:</b> strike through each counted item so nothing gets counted twice.</li>
+    <li><b>First instinct stands</b> unless someone has a concrete reason. Never leave a blank.</li>
+    <li><b>Answers in German are allowed.</b> Use whichever language you're surer of.</li>
+    <li><b>One writer</b> holds the sheet and has the final say, so debates don't eat the time.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <p>Built from the hint image, NarrenCastl's pub quiz page, and research on each topic. Facts checked where possible; treat "speculative" items as educated guesses.</p>
+</footer>
+
+<script>
+(function(){
+  // ---------- d2 drill ----------
+  const d2board=document.getElementById('d2board'), d2result=document.getElementById('d2result');
+  let d2timer=null;
+  function dashes(n){return '\u2032'.repeat(n);}
+  function buildD2(){
+    d2board.innerHTML='';d2result.textContent='';
+    for(let i=0;i<30;i++){
+      const letter=Math.random()<0.55?'d':'p';
+      let total=[1,2,2,3,4][Math.floor(Math.random()*5)];
+      let top=Math.floor(Math.random()*(Math.min(total,2)+1)); if(total-top>2) top=total-2;
+      const bottom=total-top;
+      const b=document.createElement('button');
+      b.type='button';
+      b.dataset.target=(letter==='d'&&total===2)?'1':'0';
+      b.setAttribute('aria-label',letter+' with '+total+' dashes');
+      b.innerHTML='<small>'+dashes(top)+'</small>'+letter+'<small>'+dashes(bottom)+'</small>';
+      b.addEventListener('click',()=>{if(!b.disabled)b.classList.toggle('on');});
+      d2board.appendChild(b);
+    }
+  }
+  function scoreD2(){
+    let hits=0,misses=0,wrong=0;
+    d2board.querySelectorAll('button').forEach(b=>{
+      const t=b.dataset.target==='1', on=b.classList.contains('on');
+      b.disabled=true;
+      if(t&&on){hits++;b.classList.add('hit');}
+      else if(t&&!on){misses++;b.classList.add('miss');}
+      else if(!t&&on){wrong++;b.classList.add('miss');}
+    });
+    d2result.textContent='Found '+hits+', missed '+misses+', wrongly marked '+wrong+'. Red outlines show the errors.';
+  }
+  document.getElementById('d2start').addEventListener('click',()=>{
+    clearTimeout(d2timer);buildD2();
+    let s=20;d2result.textContent=s+' s';
+    const tick=()=>{s--; if(s<=0){scoreD2();} else {d2result.textContent=s+' s'; d2timer=setTimeout(tick,1000);}};
+    d2timer=setTimeout(tick,1000);
+  });
+
+  // ---------- number search ----------
+  const nsgrid=document.getElementById('nsgrid'), nsresult=document.getElementById('nsresult');
+  document.getElementById('nsstart').addEventListener('click',()=>{
+    const nums=Array.from({length:30},(_,i)=>i+1).sort(()=>Math.random()-.5);
+    nsgrid.innerHTML='';let next=1;const t0=performance.now();nsresult.textContent='Find 1';
+    nums.forEach(n=>{
+      const b=document.createElement('button');b.type='button';b.textContent=n;
+      b.addEventListener('click',()=>{
+        if(n===next){b.classList.add('done');next++;
+          if(next>30){nsresult.textContent='Done in '+((performance.now()-t0)/1000).toFixed(1)+' s. Under 40 s is strong.';}
+          else nsresult.textContent='Find '+next;}
+      });
+      nsgrid.appendChild(b);
+    });
+  });
+
+  // ---------- Stroop ----------
+  const colours=[['red','#d23b3b'],['blue','#2f6fd6'],['green','#2e9a55'],['yellow','#d9a400'],['purple','#8b46c9'],['orange','#e07a1f']];
+  const stroop=document.getElementById('stroop');
+  function shuffleStroop(){
+    stroop.innerHTML='';
+    for(let i=0;i<24;i++){
+      const w=colours[Math.floor(Math.random()*colours.length)];
+      let c; do{c=colours[Math.floor(Math.random()*colours.length)];}while(c===w);
+      const s=document.createElement('span');s.textContent=w[0];s.style.color=c[1];stroop.appendChild(s);
+    }
+  }
+  shuffleStroop();
+  document.getElementById('stshuffle').addEventListener('click',shuffleStroop);
+
+  document.getElementById('lcreveal').addEventListener('click',()=>{
+    document.getElementById('lcresult').textContent='6. Most people count 3 because the brain skips the F in "OF" (three times).';
+  });
+
+  // ---------- flashcards ----------
+  const cards=[
+    ['Hint','In c = n/V, what does n stand for?','Amount of substance, in mol'],
+    ['Hint','What is the SI-derived unit of molar concentration, and its shorthand?','mol/L, written M (molar)'],
+    ['Hint','Which Ford model is pictured in the hint?','Ford Focus'],
+    ['Hint','Where and when was the last Ford Focus built?','Saarlouis, Germany, 14 November 2025'],
+    ['Hint','Which car did the Focus replace in 1998?','Ford Escort'],
+    ['Hint','Which Viennese brand makes the syrup in the hint?','Mautner Markhof'],
+    ['Hint','In what year was Mautner Markhof founded?','1841'],
+    ['Hint','Who plays Eleven?','Millie Bobby Brown'],
+    ['Hint','What was the Lofi Girl channel originally called?','ChilledCow'],
+    ['Hint','Which Studio Ghibli film supplied the first "study girl" loop?','Whisper of the Heart (1995)'],
+    ['Stranger Things','In which fictional town is Stranger Things set?','Hawkins, Indiana'],
+    ['Stranger Things','What number is tattooed on Eleven\'s wrist?','011'],
+    ['Stranger Things','What is Eleven\'s birth name?','Jane Ives (later Jane Hopper)'],
+    ['Stranger Things','Which breakfast food does Eleven love?','Eggo waffles'],
+    ['Stranger Things','Which Kate Bush song saves Max from Vecna?','Running Up That Hill'],
+    ['Stranger Things','Which Metallica song does Eddie play in the Upside Down?','Master of Puppets'],
+    ['Stranger Things','Who plays Vecna?','Jamie Campbell Bower'],
+    ['Stranger Things','On what date was the series finale released?','31 December 2025'],
+    ['Stranger Things','What is the name of the final episode?','The Rightside Up'],
+    ['Stranger Things','Which tabletop game gives the Demogorgon its name?','Dungeons & Dragons'],
+    ['Stranger Things','What helps Eleven concentrate enough to find people with her mind?','A sensory deprivation tank (or a makeshift one, like a kiddie pool with salt)'],
+    ['Chemistry','What law links absorbance to concentration?','Beer–Lambert law (A = ε·c·d)'],
+    ['Chemistry','Molarity or molality: which stays constant when temperature changes?','Molality (mol per kg solvent)'],
+    ['Chemistry','Write the dilution formula.','c₁·V₁ = c₂·V₂'],
+    ['Chemistry','What is the exact Avogadro constant?','6.02214076 × 10²³ per mol'],
+    ['Chemistry','Roughly how much salt is in seawater?','About 35 g per kg (3.5%)'],
+    ['Chemistry','What is the U-235 concentration in natural uranium?','About 0.7%'],
+    ['Chemistry','What is the blood alcohol limit for regular drivers in Austria?','0.5 per mille'],
+    ['Optics','What does the Latin word focus originally mean?','Hearth or fireplace'],
+    ['Optics','What is 1 divided by focal length in metres called?','Diopter (refractive power)'],
+    ['Optics','What was the first mass-produced autofocus camera?','Konica C35 AF (1977)'],
+    ['Optics','Which company developed its autofocus system?','Honeywell (Visitronic)'],
+    ['Optics','What is the underground origin point of an earthquake called?','Focus or hypocentre (epicentre is above it)'],
+    ['Optics','How many foci does an ellipse have?','Two'],
+    ['Optics','Where is the Sun in a planet\'s orbit, according to Kepler?','At one focus of the ellipse'],
+    ['Optics','Which Japanese word describes out-of-focus blur in photos?','Bokeh'],
+    ['Optics','Which telescope launched in 1990 with a mirror that couldn\'t focus properly?','Hubble Space Telescope'],
+    ['Psychology','Who described the Stroop effect, and when?','John Ridley Stroop, 1935'],
+    ['Psychology','Who created the d2 attention test?','Rolf Brickenkamp (1962)'],
+    ['Psychology','In the d2 test, which item do you cross out?','Every d with exactly two dashes'],
+    ['Psychology','Who described the cocktail party effect?','Colin Cherry (1953)'],
+    ['Psychology','Which animal walks through the famous selective attention video?','A gorilla (Simons & Chabris, 1999)'],
+    ['Psychology','Who coined the psychological concept of flow?','Mihaly Csikszentmihalyi'],
+    ['Psychology','What does pomodoro mean, and who invented the technique?','Tomato; Francesco Cirillo'],
+    ['Psychology','How long is one classic Pomodoro work session?','25 minutes (then a 5-minute break)'],
+    ['Psychology','Kim\'s game takes its name from which author\'s novel?','Rudyard Kipling (Kim, 1901)'],
+    ['Games & sport','What is the English name of the card game Memory, besides Pairs?','Concentration (also Pelmanism)'],
+    ['Games & sport','Who invented Ravensburger\'s Memory, and when was it released?','William Hurter, 1959'],
+    ['Games & sport','What is the maximum break in snooker?','147'],
+    ['Games & sport','What is the highest score with three darts?','180'],
+    ['Games & sport','How long is the biathlon penalty loop?','150 m'],
+    ['Games & sport','Which computer beat Garry Kasparov in 1997?','Deep Blue (IBM)'],
+    ['Recent','Which animated Stranger Things spin-off came out in April 2026?','Stranger Things: Tales From \'85'],
+    ['Recent','Whom did Millie Bobby Brown marry in 2024?','Jake Bongiovi (son of Jon Bon Jovi)'],
+    ['Recent','In which country is Enola Holmes 3 set?','Malta'],
+    ['Recent','Who won the 2026 PDC World Darts Championship, and against whom?','Luke Littler, 7–1 against Gian van Veen'],
+    ['Recent','How much did the 2026 darts world champion win?','£1 million, the biggest prize in darts history'],
+    ['Recent','Who won the 2026 World Snooker Championship?','Wu Yize (China), 18–17 against Shaun Murphy'],
+    ['Recent','Who will challenge Gukesh for the world chess title in 2026, and where?','Javokhir Sindarov (Uzbekistan), in Geneva'],
+    ['Recent','Where were the 2026 Olympic biathlon races held?','Antholz / Anterselva, South Tyrol'],
+    ['Recent','Since when has phone use been banned in Austrian schools up to 8th grade?','1 May 2025'],
+    ['Recent','Which country banned social media for under-16s in December 2025?','Australia'],
+    ['Recent','What was Oxford\'s Word of the Year 2024?','Brain rot'],
+    ['Music & media','Which Dutch band recorded Hocus Pocus?','Focus'],
+    ['Music & media','Who sang the 2015 single Focus?','Ariana Grande'],
+    ['Music & media','Who stars in the 2015 film Focus?','Will Smith and Margot Robbie'],
+    ['Music & media','In which year was FOCUS magazine founded?','1993'],
+    ['Music & media','Which Marconi Union track is called the most relaxing song?','Weightless']
+  ];
+  const KEY='pubquiz-focus-s9q4';
+  let state={known:{},missed:{}};
+  try{const s=localStorage.getItem(KEY); if(s) state=JSON.parse(s);}catch(e){}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
+  const cats=['All',...new Set(cards.map(c=>c[0]))];
+  let cat='All', missedOnly=false, deck=[], idx=0;
+  const fq=document.getElementById('fcq'), fa=document.getElementById('fca'), fcount=document.getElementById('fccount'), fbar=document.getElementById('fcbar'), filter=document.getElementById('fcfilter');
+  cats.forEach(c=>{const b=document.createElement('button');b.type='button';b.textContent=c;b.setAttribute('aria-pressed',c===cat);b.addEventListener('click',()=>{cat=c;missedOnly=false;filter.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x.textContent===c));build();});filter.appendChild(b);});
+  function build(){
+    deck=cards.map((c,i)=>i).filter(i=>(cat==='All'||cards[i][0]===cat)&&(!missedOnly||state.missed[i]));
+    deck.sort(()=>Math.random()-.5); idx=0; show();
+  }
+  function show(){
+    const total=cards.filter(c=>cat==='All'||c[0]===cat).length;
+    const knownN=cards.filter((c,i)=>(cat==='All'||c[0]===cat)&&state.known[i]).length;
+    fbar.style.width=(total?knownN/total*100:0)+'%';
+    if(!deck.length){fq.textContent=missedOnly?'No missed cards here. Nice.':'No cards.';fa.textContent='';fa.classList.add('hidden');fcount.textContent=knownN+' of '+total+' known';return;}
+    const i=deck[idx%deck.length];
+    fq.textContent=cards[i][1]; fa.textContent=cards[i][2]; fa.classList.add('hidden');
+    fcount.textContent=knownN+' of '+total+' known';
+  }
+  function current(){return deck[idx%deck.length];}
+  document.getElementById('fcreveal').addEventListener('click',()=>fa.classList.remove('hidden'));
+  document.getElementById('fcknew').addEventListener('click',()=>{if(!deck.length)return;const i=current();state.known[i]=1;delete state.missed[i];save();idx++;show();});
+  document.getElementById('fcmissed').addEventListener('click',()=>{if(!deck.length)return;const i=current();state.missed[i]=1;delete state.known[i];save();idx++;show();});
+  document.getElementById('fcnext').addEventListener('click',()=>{idx++;show();});
+  document.getElementById('fcmissedonly').addEventListener('click',()=>{missedOnly=true;build();});
+  document.getElementById('fcreset').addEventListener('click',()=>{state={known:{},missed:{}};save();missedOnly=false;build();});
+  build();
+})();
+</script>
+</body>
+</html>
