@@ -3,36 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Focus Trainer — People &amp; Topic</title>
-<meta name="description" content="Two-chapter pub quiz trainer: the people of the picture round, then the hard questions on concentration and focus.">
+<title>Bridge Trainer — Pub Quiz Prep</title>
+<meta name="description" content="Three-chapter pub quiz trainer for the theme bridges: picture cards, topic questions and word bridges.">
 <style>
 :root{
-  --bg:#f3f1f7; --surface:#fff; --ink:#1c2340; --muted:#5b6283;
-  --dusk:#2b3a67; --sky:#8fb3d9; --glow:#e7849a; --amber:#e9a54b;
-  --line:#dcd8e6; --good:#2f7d5b; --bad:#b53c52; --chip:#e6e2f0;
+  --bg:#f2f4f1; --surface:#fff; --ink:#1b2a23; --muted:#5a6b62;
+  --deep:#1f4d47; --stone:#9bb0a6; --rust:#c2683f; --amber:#d9a441;
+  --line:#d8e0da; --good:#2f7d5b; --bad:#b53c52; --chip:#e3eae4;
   --font-h:ui-sans-serif,system-ui,"Segoe UI",sans-serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#141a30; --surface:#1d2442; --ink:#eef0f8; --muted:#a9b0cf;
-  --dusk:#9db8e8; --sky:#5f7fb0; --glow:#f19bb0; --amber:#f0b863;
-  --line:#2f3860; --good:#6cc79c; --bad:#f08096; --chip:#28305a;
+  --bg:#121a18; --surface:#1a2522; --ink:#e9f0ec; --muted:#9db0a6;
+  --deep:#7fc0b4; --stone:#4e635a; --rust:#e08a5e; --amber:#eec06a;
+  --line:#2a3a35; --good:#6cc79c; --bad:#f08096; --chip:#24322d;
 }}
 :root[data-theme="dark"]{
-  --bg:#141a30; --surface:#1d2442; --ink:#eef0f8; --muted:#a9b0cf;
-  --dusk:#9db8e8; --sky:#5f7fb0; --glow:#f19bb0; --amber:#f0b863;
-  --line:#2f3860; --good:#6cc79c; --bad:#f08096; --chip:#28305a;
+  --bg:#121a18; --surface:#1a2522; --ink:#e9f0ec; --muted:#9db0a6;
+  --deep:#7fc0b4; --stone:#4e635a; --rust:#e08a5e; --amber:#eec06a;
+  --line:#2a3a35; --good:#6cc79c; --bad:#f08096; --chip:#24322d;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--ink);
   font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.55;
   padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
-h1,h2,h3{font-family:var(--font-h);line-height:1.15;margin:0;letter-spacing:-.01em}
+h1,h2{font-family:var(--font-h);line-height:1.15;margin:0;letter-spacing:-.01em}
 h1{font-size:1.45rem}
 h2{font-size:1.3rem}
 p{margin:.5rem 0}
 .wrap{max-width:720px;margin:0 auto;padding:0 16px}
-header{background:linear-gradient(180deg,color-mix(in srgb,var(--sky) 30%,transparent),transparent);padding:18px 0 10px}
+header{padding:16px 0 10px;background:linear-gradient(180deg,color-mix(in srgb,var(--stone) 30%,transparent),transparent)}
 header p{color:var(--muted);font-size:.95rem;margin:.2rem 0 0}
 nav{position:sticky;top:0;z-index:9;background:color-mix(in srgb,var(--bg) 92%,transparent);
   backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
@@ -40,10 +40,9 @@ nav .wrap{display:flex;gap:6px;overflow-x:auto;padding:10px 16px;scrollbar-width
 nav .wrap::-webkit-scrollbar{display:none}
 .btn{font:inherit;font-size:.93rem;border:1px solid var(--line);background:var(--chip);color:var(--ink);
   border-radius:999px;padding:7px 14px;cursor:pointer;white-space:nowrap}
-.btn.primary{background:var(--dusk);color:var(--bg);border-color:var(--dusk)}
+.btn.primary{background:var(--deep);color:var(--bg);border-color:var(--deep)}
 .btn.good{border-color:var(--good);color:var(--good);background:transparent}
 .btn.bad{border-color:var(--bad);color:var(--bad);background:transparent}
-.btn:disabled{opacity:.55;cursor:default}
 main{padding:18px 0 40px}
 .view[hidden]{display:none}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;margin:14px 0}
@@ -53,56 +52,67 @@ main{padding:18px 0 40px}
 :focus-visible{outline:3px solid var(--amber);outline-offset:2px}
 .pill{display:inline-block;font-size:.78rem;padding:2px 9px;border-radius:7px;background:var(--chip);color:var(--muted)}
 .q{font-family:var(--font-h);font-size:1.3rem;font-weight:700;margin:8px 0 12px}
-.a{font-size:1.06rem;background:color-mix(in srgb,var(--sky) 20%,var(--surface));border-radius:10px;padding:12px 14px;min-height:3em}
+.a{font-size:1.06rem;background:color-mix(in srgb,var(--stone) 22%,var(--surface));border-radius:10px;padding:12px 14px;min-height:3em}
 .a.hidden{color:transparent;background:repeating-linear-gradient(45deg,var(--chip) 0 10px,transparent 10px 20px);user-select:none}
+.a b{color:var(--deep)}
 .bar{height:7px;background:var(--chip);border-radius:7px;overflow:hidden;margin:14px 0 4px}
 .bar i{display:block;height:100%;background:var(--good);transition:width .3s}
+.photo{position:relative;width:100%;max-width:420px;margin:10px auto 4px;aspect-ratio:4/3;border-radius:14px;
+  overflow:hidden;background:var(--chip);display:flex;align-items:center;justify-content:center}
+.photo img{width:100%;height:100%;object-fit:cover}
+.photo-ph{padding:18px;text-align:center;color:var(--muted);font-size:.9rem}
+.photo.nophoto{aspect-ratio:auto;min-height:80px}
+.credit{text-align:center;font-size:.78rem;color:var(--muted);margin-bottom:6px}
+.credit a{color:var(--muted)}
+.wb{font-family:var(--font-h);font-size:1.5rem;font-weight:800;text-align:center;margin:16px 0;letter-spacing:.01em}
+.wb span{color:var(--rust)}
 .list{margin:0;padding:0;list-style:none}
-.list li{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.95rem}
-.list b{flex:none;min-width:12ch}
+.list li{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.list b{flex:none;min-width:13ch}
 details.card{padding:0}
 details summary{cursor:pointer;padding:14px 18px;font-family:var(--font-h);font-weight:700;list-style:none;
   display:flex;justify-content:space-between}
 details summary::-webkit-details-marker{display:none}
-details summary::after{content:"+";color:var(--glow)}
+details summary::after{content:"+";color:var(--rust)}
 details[open] summary::after{content:"\2013"}
-.photo{position:relative;width:100%;max-width:340px;margin:10px auto 4px;aspect-ratio:3/4;border-radius:14px;
-  overflow:hidden;background:var(--chip);display:flex;align-items:center;justify-content:center}
-.photo img{width:100%;height:100%;object-fit:cover;filter:blur(16px);transform:scale(1.06);
-  transition:filter .9s ease}
-.photo.sharp img{filter:blur(0)}
-.photo-ph{padding:18px;text-align:center;color:var(--muted);font-size:.9rem}
-.photo.nophoto{aspect-ratio:auto;min-height:90px}
-.credit{text-align:center;font-size:.78rem;color:var(--muted);margin-bottom:6px}
-.credit a{color:var(--muted)}
 footer{color:var(--muted);font-size:.85rem;padding:6px 0 30px}
 </style>
 </head>
 <body>
 
 <header><div class="wrap">
-  <h1>Focus Trainer</h1>
-  <p>Chapter 1: the people of the picture round. Chapter 2: the hard questions on the theme.</p>
+  <h1>Bridge Trainer</h1>
+  <p>Season 9, Quiz 5. Pictures, topic questions, lateral readings and word bridges — all as flashcards.</p>
 </div></header>
 
 <nav aria-label="Chapters"><div class="wrap" id="nav"></div></nav>
 
 <main class="wrap">
 
-  <section class="view" id="view-people">
-    <h2>1 · People</h2>
-    <p class="muted">Photos load from Wikipedia and start out of focus. Say the name out loud, then sharpen and reveal.</p>
-    <div id="people-app"></div>
-    <details class="card">
-      <summary>Full list of people</summary>
-      <div style="padding:0 18px 14px"><ul class="list" id="people-list"></ul></div>
-    </details>
+  <section class="view" id="view-pics">
+    <h2>1 · Pictures</h2>
+    <p class="muted">Bridges, builders and the other meanings of the word. Photos come from Wikipedia. Name it out loud, then reveal.</p>
+    <div id="pics-app"></div>
+    <details class="card"><summary>Full list</summary>
+      <div style="padding:0 18px 14px"><ul class="list" id="pics-list"></ul></div></details>
   </section>
 
   <section class="view" id="view-topic" hidden>
-    <h2>2 · Questions on the topic</h2>
-    <p class="muted">Answer out loud, then reveal. Chemistry, optics, Stranger Things, the Ford Focus, Mautner Markhof, attention psychology, games and recent news.</p>
+    <h2>2 · Topic questions</h2>
+    <p class="muted">Famous bridges, engineering, the card game, the other meanings, language, Austria, pop culture and recent news.</p>
     <div id="topic-app"></div>
+  </section>
+
+  <section class="view" id="view-lateral" hidden>
+    <h2>4 · Outside the box</h2>
+    <p class="muted">The readings nobody prepares: Königsberg and graph theory, Bifröst, Bridgestone, Innsbruck, bridge mode, the snooker bridge, London Bridge is down.</p>
+    <div id="lateral-app"></div>
+  </section>
+
+  <section class="view" id="view-words" hidden>
+    <h2>3 · Word bridges</h2>
+    <p class="muted">Find the word that bridges both sides: it ends the first compound and starts the second. English and German.</p>
+    <div id="words-app"></div>
   </section>
 
 </main>
@@ -115,269 +125,301 @@ footer{color:var(--muted);font-size:.85rem;padding:6px 0 30px}
 </footer>
 
 <script>
-/* ============ chapter 1: people ============ */
-/* [name, known for, group] */
-const PEOPLE=[
-["Millie Bobby Brown","plays Eleven in Stranger Things","Stranger Things","Millie Bobby Brown"],
-["David Harbour","plays Jim Hopper, Eleven's adoptive father","Stranger Things","David Harbour"],
-["Winona Ryder","plays Joyce Byers","Stranger Things","Winona Ryder"],
-["Finn Wolfhard","plays Mike Wheeler","Stranger Things","Finn Wolfhard"],
-["Noah Schnapp","plays Will Byers","Stranger Things","Noah Schnapp"],
-["Gaten Matarazzo","plays Dustin Henderson","Stranger Things","Gaten Matarazzo"],
-["Caleb McLaughlin","plays Lucas Sinclair","Stranger Things","Caleb McLaughlin"],
-["Sadie Sink","plays Max Mayfield, saved by a Kate Bush song","Stranger Things","Sadie Sink"],
-["Joe Keery","plays Steve Harrington","Stranger Things","Joe Keery"],
-["Maya Hawke","plays Robin Buckley","Stranger Things","Maya Hawke"],
-["Natalia Dyer","plays Nancy Wheeler","Stranger Things","Natalia Dyer"],
-["Jamie Campbell Bower","plays Vecna, alias Henry Creel","Stranger Things","Jamie Campbell Bower"],
-["Joseph Quinn","plays Eddie Munson, who plays Metallica in the Upside Down","Stranger Things","Joseph Quinn (actor)"],
-["Linda Hamilton","the Terminator star who joined as Dr. Kay in season 5","Stranger Things","Linda Hamilton"],
-["Matthew Modine","plays Dr. Martin Brenner, called Papa","Stranger Things","Matthew Modine"],
-["Matt and Ross Duffer","the twin brothers who created Stranger Things","Stranger Things","Duffer Brothers"],
-["Jake Bongiovi","Millie Bobby Brown's husband, son of Jon Bon Jovi","Stranger Things","Jake Bongiovi"],
+/* ===== chapter 1: pictures — [name, what it is, group, wikipedia title] ===== */
+const PICS=[
+["Golden Gate Bridge","San Francisco, 1937, painted International Orange","Famous bridges","Golden Gate Bridge"],
+["Brooklyn Bridge","New York, 1883, built by the Roebling family","Famous bridges","Brooklyn Bridge"],
+["Tower Bridge","London, 1894, a bascule bridge with two towers","Famous bridges","Tower Bridge"],
+["London Bridge","the plain neighbour of Tower Bridge; the 1831 version stands in Arizona today","Famous bridges","London Bridge"],
+["Charles Bridge","Prague, begun 1357 under Charles IV, lined with statues","Famous bridges","Charles Bridge"],
+["Ponte Vecchio","Florence, the Arno bridge lined with goldsmiths' shops","Famous bridges","Ponte Vecchio"],
+["Rialto Bridge","Venice, the stone arch over the Grand Canal","Famous bridges","Rialto Bridge"],
+["Bridge of Sighs","Venice, links the Doge's Palace to the old prison","Famous bridges","Bridge of Sighs"],
+["Sydney Harbour Bridge","Australia, 1932, nicknamed the Coathanger","Famous bridges","Sydney Harbour Bridge"],
+["Akashi Kaikyo Bridge","Japan, 1998, longest span in the world until 2022","Famous bridges","Akashi Kaikyō Bridge"],
+["1915 Canakkale Bridge","Turkey, 2022, the longest suspension span at 2,023 m","Famous bridges","1915 Çanakkale Bridge"],
+["Millau Viaduct","France, 2004, the tallest bridge towers in the world","Famous bridges","Millau Viaduct"],
+["Oresund Bridge","Denmark to Sweden, 2000, half bridge and half tunnel","Famous bridges","Öresund Bridge"],
+["Bosphorus Bridge","Istanbul, 1973, links Europe and Asia","Famous bridges","15 July Martyrs Bridge"],
+["Pont du Gard","southern France, a Roman aqueduct bridge","Famous bridges","Pont du Gard"],
+["Chapel Bridge","Lucerne, the covered wooden bridge from 1333","Famous bridges","Chapel Bridge"],
+["Forth Bridge","Scotland, the red cantilever railway bridge of 1890","Famous bridges","Forth Bridge"],
+["Stari Most","Mostar, destroyed in 1993 and rebuilt in 2004","Famous bridges","Stari Most"],
+["Szechenyi Chain Bridge","Budapest, 1849, the first permanent Danube bridge in Hungary","Famous bridges","Széchenyi Chain Bridge"],
+["Glienicke Bridge","Berlin to Potsdam, where Cold War spies were exchanged","Famous bridges","Glienicke Bridge"],
+["Hohenzollern Bridge","Cologne, the railway bridge covered in love locks","Famous bridges","Hohenzollern Bridge"],
+["Iron Bridge","Shropshire, 1779, the first major cast-iron bridge","Famous bridges","The Iron Bridge"],
+["Pont Neuf","Paris, despite the name the oldest bridge over the Seine","Famous bridges","Pont Neuf"],
+["Vasco da Gama Bridge","Lisbon, 1998, one of the longest bridges in Europe","Famous bridges","Vasco da Gama Bridge"],
+["25 de Abril Bridge","Lisbon, the red suspension bridge resembling San Francisco","Famous bridges","25 de Abril Bridge"],
+["Tacoma Narrows Bridge","collapsed in 1940 in the wind, nicknamed Galloping Gertie","Famous bridges","Tacoma Narrows Bridge (1940)"],
+["Millennium Bridge","London, the footbridge that wobbled days after opening","Famous bridges","Millennium Bridge, London"],
+["Gateshead Millennium Bridge","Newcastle, the tilting footbridge known as the blinking eye","Famous bridges","Gateshead Millennium Bridge"],
+["Helix Bridge","Singapore, shaped like a strand of DNA","Famous bridges","Helix Bridge"],
+["Danyang-Kunshan Grand Bridge","China, the longest bridge in the world at 164.8 km","Famous bridges","Danyang–Kunshan Grand Bridge"],
+["Beipanjiang Bridge","Guizhou, held the record as the world's highest bridge until 2025","Famous bridges","Duge Bridge"],
+["Genoa San Giorgio Bridge","replaced the Morandi bridge that collapsed in 2018","Famous bridges","Genoa Saint George Bridge"],
+["Francis Scott Key Bridge","Baltimore, destroyed in 2024 when a container ship hit a pier","Famous bridges","Francis Scott Key Bridge (Baltimore)"],
+["Golden Horn Metro Bridge","Istanbul; the Golden Horn is its estuary","Famous bridges","Golden Horn Metro Bridge"],
 
-["Magnus Carlsen","Norwegian grandmaster and long-time chess world number one","Concentration sport","Magnus Carlsen"],
-["Gukesh Dommaraju","became the youngest undisputed chess world champion in 2024","Concentration sport","Gukesh Dommaraju"],
-["Javokhir Sindarov","Uzbek grandmaster who won the 2026 Candidates","Concentration sport","Javokhir Sindarov"],
-["Garry Kasparov","lost to the computer Deep Blue in 1997","Concentration sport","Garry Kasparov"],
-["Judit Polgar","the strongest female chess player in history","Concentration sport","Judit Polgár"],
-["Ronnie O'Sullivan","seven-time snooker world champion, made the fastest 147","Concentration sport","Ronnie O'Sullivan"],
-["Wu Yize","won the 2026 world snooker championship 18-17","Concentration sport","Wu Yize"],
-["Luke Littler","darts world champion in 2025 and 2026","Concentration sport","Luke Littler"],
-["Gian van Veen","Dutch darts player, beaten in the 2026 world final","Concentration sport","Gian van Veen"],
-["Phil Taylor","won sixteen darts world titles, nicknamed The Power","Concentration sport","Phil Taylor (darts player)"],
-["Michael van Gerwen","Dutch darts player known as Mighty Mike","Concentration sport","Michael van Gerwen"],
-["Johannes Thingnes Boe","Norwegian biathlete, the most successful of his era","Concentration sport","Johannes Thingnes Bø"],
-["Lisa Vittozzi","won Italy's first Olympic biathlon pursuit gold in 2026","Concentration sport","Lisa Vittozzi"],
-["Franziska Preuss","German biathlete who ended her career at the 2026 Games","Concentration sport","Franziska Preuß"],
-["Alex Honnold","climbed El Capitan without a rope, in the film Free Solo","Concentration sport","Alex Honnold"],
-["Philippe Petit","walked a tightrope between the Twin Towers in 1974","Concentration sport","Philippe Petit"],
-["Simone Biles","gymnast who spoke publicly about losing her air awareness","Concentration sport","Simone Biles"],
-["Tiger Woods","golfer famous for his focus over the ball","Concentration sport","Tiger Woods"],
-["Uri Geller","claimed to bend spoons with the power of his mind","Concentration sport","Uri Geller"],
+["Mozartsteg","Salzburg, the Art Nouveau footbridge of 1903, once a toll bridge","Austria","Mozartsteg"],
+["Marko-Feingold-Steg","Salzburg, formerly the Makartsteg, the one with the love locks","Austria","Marko-Feingold-Steg"],
+["Staatsbrücke","Salzburg, the main road bridge over the Salzach","Austria","Staatsbrücke (Salzburg)"],
+["Europabrucke","Tyrol, the Brenner motorway bridge of 1963, 190 m high","Austria","Europabrücke"],
+["Reichsbrucke","Vienna, the Danube bridge that collapsed in 1976","Austria","Reichsbrücke"],
+["Donauturm","Vienna landmark near the Danube bridges","Austria","Donauturm"],
 
-["Amedeo Avogadro","the constant for the number of particles in a mole","Science","Amedeo Avogadro"],
-["Carl Zeiss","founded the optics workshop in Jena in 1846","Science","Carl Zeiss"],
-["Ernst Abbe","worked out the physics of the microscope with Zeiss","Science","Ernst Abbe"],
-["Joseph von Fraunhofer","the dark lines in the solar spectrum bear his name","Science","Joseph von Fraunhofer"],
-["Isaac Newton","split white light with a prism and built a reflecting telescope","Science","Isaac Newton"],
-["Ibn al-Haytham","medieval scholar who founded the science of optics","Science","Ibn al-Haytham"],
-["Johannes Kepler","showed the Sun sits at one focus of each planet's orbit","Science","Johannes Kepler"],
-["Henry Ford","car maker behind the Model T and the assembly line","Science","Henry Ford"],
-["Adolf Ignaz Mautner","founded the Viennese firm behind the syrup in 1841","Science","Adolf Ignaz Mautner von Markhof"],
-["William Hurter","the Swiss diplomat who brought Memory to Ravensburger","Science"],
+["Isambard Kingdom Brunel","Victorian engineer of the Clifton Suspension Bridge","Builders","Isambard Kingdom Brunel"],
+["John A. Roebling","designed the Brooklyn Bridge and died before it was built","Builders","John A. Roebling"],
+["Emily Warren Roebling","took over site management of the Brooklyn Bridge","Builders","Emily Warren Roebling"],
+["Gustave Eiffel","built iron viaducts before his tower","Builders","Gustave Eiffel"],
+["Thomas Telford","Scottish engineer of the Menai Suspension Bridge","Builders","Thomas Telford"],
+["Charles IV","the emperor who had the Charles Bridge built","Builders","Charles IV, Holy Roman Emperor"],
+["Santiago Calatrava","architect of white, sculptural bridges worldwide","Builders","Santiago Calatrava"],
+["Norman Foster","architect who worked on the Millau Viaduct","Builders","Norman Foster"],
+["Renzo Piano","designed Genoa's replacement bridge after the 2018 collapse","Builders","Renzo Piano"],
+["Hans Makart","the Salzburg painter the Makartsteg was named after","Builders","Hans Makart"],
+["Wolfgang Amadeus Mozart","the Mozartsteg carries his name","Builders","Wolfgang Amadeus Mozart"],
 
-["Maria Montessori","doctor and educator who described children's deep concentration","Attention research","Maria Montessori"],
-["Mihaly Csikszentmihalyi","psychologist who named the state of flow","Attention research","Mihaly Csikszentmihalyi"],
-["Daniel Kahneman","wrote Thinking, Fast and Slow","Attention research","Daniel Kahneman"],
-["John Ridley Stroop","gave his name to the colour-word test of 1935","Attention research","John Ridley Stroop"],
-["Rolf Brickenkamp","created the d2 attention test in 1962","Attention research","Rolf Brickenkamp"],
-["Colin Cherry","described the cocktail party effect in 1953","Attention research","Colin Cherry"],
-["Simons and Chabris","ran the invisible gorilla experiment","Attention research","Christopher Chabris"],
-["Francesco Cirillo","invented the Pomodoro technique with a tomato timer","Attention research"],
-["Jon Kabat-Zinn","founded the MBSR mindfulness programme in 1979","Attention research","Jon Kabat-Zinn"],
-["Cal Newport","wrote Deep Work","Attention research","Cal Newport"],
-["George Miller","the magical number seven, plus or minus two","Attention research","George Armitage Miller"],
-["Rudyard Kipling","his novel gave its name to Kim's game","Attention research","Rudyard Kipling"],
+["Omar Sharif","film star and world-class tournament bridge player","Bridge people","Omar Sharif"],
+["Jeff Bridges","the actor whose surname is the theme","Bridge people","Jeff Bridges"],
+["Paul Simon","wrote Bridge over Troubled Water","Bridge people","Paul Simon"],
+["Art Garfunkel","sang the lead on Bridge over Troubled Water","Bridge people","Art Garfunkel"],
+["Warren Buffett","investor known for playing bridge with Bill Gates","Bridge people","Warren Buffett"],
+["Ernst Ludwig Kirchner","co-founder of the artists' group Die Brücke in 1905","Bridge people","Ernst Ludwig Kirchner"],
 
-["Will Smith","stars with Margot Robbie in the 2015 film Focus","Pop culture","Will Smith"],
-["Margot Robbie","the con artist opposite Will Smith in Focus","Pop culture","Margot Robbie"],
-["Ariana Grande","released the single Focus in 2015","Pop culture","Ariana Grande"],
-["H.E.R.","released her own song called Focus in 2016","Pop culture","H.E.R."],
-["Kate Bush","her Running Up That Hill returned to number one thanks to Stranger Things","Pop culture","Kate Bush"],
-["Thijs van Leer","the yodelling frontman of the Dutch band Focus","Pop culture","Thijs van Leer"],
-["Eminem","Lose Yourself, the one-shot anthem from 8 Mile","Pop culture","Eminem"],
-["Helmut Markwort","founding editor of FOCUS magazine","Pop culture","Helmut Markwort"],
-["Juan Pablo Machado","the Colombian artist who drew Lofi Girl","Pop culture"],
-["Benedict Cumberbatch","plays a Sherlock who retreats into his mind palace","Pop culture","Benedict Cumberbatch"],
-["Henry Cavill","plays Sherlock Holmes alongside Millie Bobby Brown","Pop culture","Henry Cavill"],
-["Louis Partridge","plays Lord Tewkesbury in the Enola Holmes films","Pop culture"]
+["Contract bridge","the card game: four players, 13 cards each","Other meanings","Contract bridge"],
+["Ship's bridge","the command deck of a vessel","Other meanings","Bridge (nautical)"],
+["Guitar bridge","carries the strings and transmits their vibration to the body","Other meanings","Bridge (instrument)"],
+["Dental bridge","replaces missing teeth, anchored on the neighbours","Other meanings","Bridge (dentistry)"],
+["Wheatstone bridge","the circuit for measuring an unknown resistance","Other meanings","Wheatstone bridge"],
+["Salt bridge","connects the half-cells of a galvanic cell","Other meanings","Salt bridge"],
+["Nasal bridge","the bony part of the nose where glasses rest","Other meanings","Nasal bridge"],
+["Bridge pose","the back bend in gymnastics and yoga","Other meanings","Bridge (exercise)"]
 ];
 
-/* ============ chapter 2: the topic ============ */
-/* [category, question, answer] */
+/* ===== chapter 2: topic questions — [category, question, answer] ===== */
 const TOPIC=[
-["Hint","In c = n/V, what does n stand for?","Amount of substance, in mol"],
-["Hint","What is the unit of molar concentration?","mol/L, written M"],
-["Hint","Which car model is shown in the hint?","Ford Focus"],
-["Hint","Where and when was the last Ford Focus built?","Saarlouis, Germany, 14 November 2025"],
-["Hint","Which car did the Focus replace in 1998?","Ford Escort"],
-["Hint","Which Viennese brand makes the syrup in the hint?","Mautner Markhof"],
-["Hint","In what year was Mautner Markhof founded?","1841"],
-["Hint","Which Viennese district is Mautner Markhof based in?","Simmering"],
-["Hint","Which German mustard maker owns Mautner Markhof?","Develey"],
-["Hint","What was the Lofi Girl channel called before 2021?","ChilledCow"],
-["Hint","Which Studio Ghibli film supplied the original study-girl loop?","Whisper of the Heart, 1995"],
-["Hint","What is the German word for a focal point?","Brennpunkt"],
-["Hint","What is the German word for concentration?","Konzentration"],
+["Famous bridges","In which year did the Golden Gate Bridge open?","1937"],
+["Famous bridges","What is the official colour of the Golden Gate Bridge called?","International Orange"],
+["Famous bridges","Which river does the Brooklyn Bridge cross?","The East River"],
+["Famous bridges","Who finished the Brooklyn Bridge after the chief engineer died and his son fell ill?","Emily Warren Roebling"],
+["Famous bridges","In which year did the Brooklyn Bridge open?","1883"],
+["Famous bridges","What type of bridge is Tower Bridge?","A bascule bridge, which opens upwards"],
+["Famous bridges","Where does the old London Bridge of 1831 stand today?","Lake Havasu City, Arizona"],
+["Famous bridges","Which river does the Charles Bridge cross?","The Vltava, or Moldau"],
+["Famous bridges","Which saint was thrown from the Charles Bridge?","John of Nepomuk"],
+["Famous bridges","What is sold in the shops on the Ponte Vecchio?","Gold and jewellery"],
+["Famous bridges","Which corridor runs above the Ponte Vecchio?","The Vasari Corridor"],
+["Famous bridges","Which two buildings does the Bridge of Sighs connect?","The Doge's Palace and the prison"],
+["Famous bridges","What is the nickname of the Sydney Harbour Bridge?","The Coathanger"],
+["Famous bridges","Which bridge has the longest suspension span in the world?","The 1915 Çanakkale Bridge in Turkey, at 2,023 m"],
+["Famous bridges","Which bridge held that record before, from 1998?","The Akashi Kaikyo Bridge in Japan, at 1,991 m"],
+["Famous bridges","Which strait does the Çanakkale Bridge cross?","The Dardanelles"],
+["Famous bridges","Which bridge has the tallest towers in the world?","The Millau Viaduct in France, at 343 m"],
+["Famous bridges","Which river does the Millau Viaduct cross?","The Tarn"],
+["Famous bridges","Which two countries does the Öresund Bridge connect?","Denmark and Sweden"],
+["Famous bridges","What happens halfway across the Öresund link?","The bridge becomes a tunnel, on the artificial island of Peberholm"],
+["Famous bridges","Which two continents does the Bosphorus Bridge connect?","Europe and Asia"],
+["Famous bridges","What was the Pont du Gard originally built for?","To carry water, as a Roman aqueduct"],
+["Famous bridges","In which Swiss city does the Chapel Bridge stand?","Lucerne"],
+["Famous bridges","What makes the Chapel Bridge special?","It is one of Europe's oldest covered wooden bridges, from 1333"],
+["Famous bridges","Which idiom describes an endless job, after a Scottish bridge?","Painting the Forth Bridge"],
+["Famous bridges","In which city does the Stari Most stand?","Mostar, in Bosnia and Herzegovina"],
+["Famous bridges","Which bridge was known as the Bridge of Spies?","The Glienicke Bridge between Berlin and Potsdam"],
+["Famous bridges","Which Cologne bridge is famous for its love locks?","The Hohenzollern Bridge"],
+["Famous bridges","Where does the world's first major cast-iron bridge stand, and from when?","Ironbridge in Shropshire, 1779"],
+["Famous bridges","Which is the oldest bridge over the Seine in Paris?","The Pont Neuf, despite its name"],
+["Famous bridges","Which bridge collapsed in 1940 and is a textbook case in physics?","The Tacoma Narrows Bridge, Galloping Gertie"],
+["Famous bridges","What was London's Millennium Bridge nicknamed after it opened?","The Wobbly Bridge"],
+["Famous bridges","Which is the longest bridge in the world overall?","The Danyang-Kunshan Grand Bridge in China, 164.8 km"],
+["Famous bridges","Which is the world's highest bridge?","The Huajiang Grand Canyon Bridge in Guizhou, about 625 m above the river"],
+["Famous bridges","Which Italian bridge collapsed in 2018?","The Morandi Bridge in Genoa"],
+["Famous bridges","Which city has the most bridges in Europe?","Hamburg, with well over 2,000"],
+["Famous bridges","Roughly how many bridges does Venice have?","About 400"],
 
-["Stranger Things","In which fictional town is the series set?","Hawkins, Indiana"],
-["Stranger Things","What number is tattooed on Eleven's wrist?","011"],
-["Stranger Things","What is Eleven's birth name?","Jane Ives, later Jane Hopper"],
-["Stranger Things","Which breakfast food does Eleven love?","Eggo waffles"],
-["Stranger Things","Which Kate Bush song saves Max from Vecna?","Running Up That Hill"],
-["Stranger Things","Which Metallica song does Eddie play in the Upside Down?","Master of Puppets"],
-["Stranger Things","When was the series finale released?","31 December 2025"],
-["Stranger Things","What is the final episode called?","The Rightside Up"],
-["Stranger Things","Which game gives the Demogorgon its name?","Dungeons & Dragons"],
-["Stranger Things","What helps Eleven concentrate enough to find people with her mind?","A sensory deprivation tank"],
-["Stranger Things","Which ice cream parlour does Steve work at in season 3?","Scoops Ahoy"],
-["Stranger Things","What is the parallel world called?","The Upside Down"],
-["Stranger Things","Which mall is central to season 3?","Starcourt Mall"],
-["Stranger Things","What is Kali's number?","Eight"],
-["Stranger Things","Which animated spin-off arrived in April 2026?","Stranger Things: Tales From '85"],
-["Stranger Things","How many episodes does the first season of the spin-off have?","Ten"],
+["Engineering","Name the main bridge types.","Beam, arch, truss, cantilever, suspension and cable-stayed"],
+["Engineering","What is the difference between suspension and cable-stayed?","Suspension hangs from main cables, cable-stayed has cables straight from the pylons"],
+["Engineering","What is the stone at the top of an arch called?","The keystone"],
+["Engineering","What is the German term for the abutment that carries the end of a bridge?","Widerlager"],
+["Engineering","Why do soldiers break step when crossing a bridge?","To avoid resonance building up"],
+["Engineering","Why do bridges have expansion joints?","Because steel and concrete expand and contract with temperature"],
+["Engineering","What is a Bailey bridge?","A prefabricated military bridge from the Second World War"],
+["Engineering","Why were wooden bridges covered?","To protect the timber structure from the weather"],
+["Engineering","What is the span of a bridge?","The distance between two supports"],
+["Engineering","What is a pontoon bridge?","A floating bridge resting on boats or pontoons"],
+["Engineering","What is a viaduct?","A long bridge, usually on many piers, crossing a valley or land"],
+["Engineering","What is the Latin word for bridge?","Pons"],
 
-["Chemistry","Which law links absorbance to concentration?","The Beer-Lambert law"],
-["Chemistry","Molarity or molality: which ignores temperature?","Molality, in mol per kg of solvent"],
-["Chemistry","What is the dilution formula?","c1 V1 = c2 V2"],
-["Chemistry","What is the exact value of the Avogadro constant?","6.02214076 x 10^23 per mol"],
-["Chemistry","Roughly how much salt does seawater contain?","About 35 g per kg, or 3.5 percent"],
-["Chemistry","How much U-235 is in natural uranium?","About 0.7 percent"],
-["Chemistry","What is the blood alcohol limit for regular drivers in Austria?","0.5 per mille"],
-["Chemistry","What does pH measure?","The hydronium concentration, as its negative logarithm"],
-["Chemistry","What is uranium ore concentrate called?","Yellowcake"],
-["Chemistry","What does ppm stand for?","Parts per million"],
-["Chemistry","The mole is the SI unit of what?","Amount of substance"],
-["Chemistry","What does a C30 dilution in homeopathy mean?","Diluted one to a hundred, thirty times over"],
-["Chemistry","What is the salt content of physiological saline?","0.9 percent sodium chloride"],
-["Chemistry","Roughly how much acetic acid is in table vinegar?","About 5 percent"],
-["Chemistry","What is a solution called that can take no more solute?","Saturated"],
-["Chemistry","Which gas makes up about 78 percent of air?","Nitrogen"],
-["Chemistry","Which process concentrates fruit juice for transport?","Evaporation, removing the water"],
-["Chemistry","What does a hydrometer measure?","The density of a liquid"],
+["Card game","How many players play bridge, and in what formation?","Four, as two partnerships"],
+["Card game","How many cards does each player get?","Thirteen"],
+["Card game","How many tricks are played in one deal?","Thirteen"],
+["Card game","What is the exposed hand on the table called?","The dummy"],
+["Card game","How are the four seats named?","North, East, South and West"],
+["Card game","What is the ranking of the suits in the bidding?","Clubs, diamonds, hearts, spades, then no-trump"],
+["Card game","What is the highest possible contract?","Seven no-trump"],
+["Card game","What is a grand slam?","Winning all thirteen tricks"],
+["Card game","What is a small slam?","Winning twelve tricks"],
+["Card game","How are high card points counted?","Ace 4, king 3, queen 2, jack 1, giving 40 in the deck"],
+["Card game","Which older card game is bridge descended from?","Whist"],
+["Card game","Who codified contract bridge in 1925?","Harold Vanderbilt"],
+["Card game","Which film star was a world-class bridge player?","Omar Sharif"],
 
-["Optics","What did the Latin word focus originally mean?","Hearth or fireplace"],
-["Optics","What is one divided by the focal length in metres called?","The diopter"],
-["Optics","What was the first mass-produced autofocus camera?","The Konica C35 AF, 1977"],
-["Optics","Which company built its autofocus system?","Honeywell, called Visitronic"],
-["Optics","What is the underground origin of an earthquake called?","The focus, or hypocentre"],
-["Optics","How many foci does an ellipse have?","Two"],
-["Optics","Which Japanese word describes out-of-focus blur?","Bokeh"],
-["Optics","Which telescope launched in 1990 unable to focus sharply?","The Hubble Space Telescope"],
-["Optics","Which SLR of 1985 first had autofocus in the body?","The Minolta 7000"],
-["Optics","Which lens shape converges light?","A convex, or converging, lens"],
-["Optics","Which lens corrects short-sightedness?","A concave, or diverging, lens"],
-["Optics","What does SLR stand for?","Single-lens reflex"],
-["Optics","What is the point of sharpest vision on the retina called?","The fovea"],
-["Optics","What does the word laser stand for?","Light amplification by stimulated emission of radiation"],
-["Optics","What are the mirrors called that concentrate sunlight on a solar tower?","Heliostats"],
-["Optics","Which German town is home to Leica?","Wetzlar"],
-["Optics","In which city was Carl Zeiss founded in 1846?","Jena"],
+["Other meanings","What is the bridge of a song?","The contrasting section between chorus and final part"],
+["Other meanings","What does the bridge on a guitar or violin do?","It carries the strings and passes their vibration to the body"],
+["Other meanings","What is the bridge of a ship?","The command deck from which it is steered"],
+["Other meanings","What is a dental bridge?","A fixed replacement for missing teeth, anchored on the neighbouring ones"],
+["Other meanings","What does a Wheatstone bridge measure?","An unknown electrical resistance"],
+["Other meanings","What is the job of the salt bridge in a galvanic cell?","To balance the charge between the half-cells"],
+["Other meanings","What is the German term for a hydrogen bond?","Wasserstoffbrückenbindung"],
+["Other meanings","Which bond holds protein chains together and is called a bridge?","The disulfide bridge"],
+["Other meanings","What does a bridge do in a computer network?","It connects two network segments into one"],
+["Other meanings","What is the bridge of the nose?","The bony upper part where glasses rest"],
+["Other meanings","What is a bridge in gymnastics?","A back bend on hands and feet"],
+["Other meanings","What is a bridgehead?","A secured position on the far bank of a river"],
 
-["Psychology","Who described the Stroop effect, and when?","John Ridley Stroop, 1935"],
-["Psychology","In the d2 test, which character do you cross out?","Every d with exactly two dashes"],
-["Psychology","Who described the cocktail party effect?","Colin Cherry, 1953"],
-["Psychology","Which animal walks through the famous attention video?","A gorilla"],
-["Psychology","What does pomodoro mean?","Tomato"],
-["Psychology","How long is one classic Pomodoro session?","25 minutes, then a 5-minute break"],
-["Psychology","Which law says performance peaks at medium arousal?","The Yerkes-Dodson law, 1908"],
-["Psychology","What does ADHD stand for?","Attention deficit hyperactivity disorder"],
-["Psychology","What is the magical number for short-term memory?","Seven, plus or minus two"],
-["Psychology","What is it called when you miss a change in a scene?","Change blindness"],
-["Psychology","What is the general name for a strike-out test?","A cancellation test"],
-["Psychology","What is the penalty for jumping between tasks called?","Task switching cost"],
+["Language","What does the Latin pontifex mean literally?","Bridge builder"],
+["Language","Which papal title contains that word?","Pontifex Maximus"],
+["Language","What does it mean to burn your bridges?","To cut off any way back"],
+["Language","What does water under the bridge mean?","Something long past that no longer matters"],
+["Language","What does the English phrase cross that bridge when we come to it mean?","Deal with the problem only when it arrives"],
+["Language","What is a Brückentag in German?","A working day between a public holiday and the weekend that people take off"],
+["Language","What does goldene Brücken bauen mean?","To make it easy for someone to back down or give in"],
+["Language","What was Die Brücke, founded in Dresden in 1905?","A group of Expressionist artists"],
+["Language","What is a bridge in dentistry called in German?","Zahnbrücke"],
+["Language","Which French word means bridge?","Pont"],
 
-["Games & sport","What is the English name of the game Memory, besides Pairs?","Concentration"],
-["Games & sport","In which year did Ravensburger's Memory appear?","1959"],
-["Games & sport","What is the maximum break in snooker?","147"],
-["Games & sport","What is the highest score with three darts?","180"],
-["Games & sport","How long is the biathlon penalty loop?","150 metres"],
-["Games & sport","Which computer beat Kasparov in 1997?","Deep Blue"],
-["Games & sport","How far is the darts throwing line from the board?","2.37 metres"],
-["Games & sport","How many balls are on a snooker table at the start?","22"],
-["Games & sport","What is the bullseye worth in darts?","50"],
-["Games & sport","Which calibre do biathletes shoot?",".22 long rifle"],
-["Games & sport","How many squares does a chessboard have?","64"],
-["Games & sport","Which theatre has hosted the snooker worlds since 1977?","The Crucible in Sheffield"],
-["Games & sport","How many rings does an archery target have?","Ten"],
+["Austria","How many bridges cross the Salzach in the city of Salzburg?","Thirteen"],
+["Austria","When was the Mozartsteg built, and what was unusual about it?","1903, and it was a private toll bridge"],
+["Austria","What is the Makartsteg called today?","The Marko-Feingold-Steg"],
+["Austria","After whom was the Makartsteg originally named?","The painter Hans Makart"],
+["Austria","Which Salzburg bridge carries the main traffic over the Salzach?","The Staatsbrücke"],
+["Austria","Which Tyrolean bridge carries the Brenner motorway?","The Europabrücke"],
+["Austria","Which Viennese Danube bridge collapsed on 1 August 1976?","The Reichsbrücke"],
+["Austria","Who designed the euro banknotes, and for which central bank did he work?","Robert Kalina, at the Austrian National Bank"],
+["Austria","What is shown on the back of every euro note?","A bridge, in the style of a different architectural era"],
+["Austria","Are the bridges on the euro notes real?","No, they are invented, though replicas were built in the Netherlands"],
 
-["Music & media","Which Dutch band recorded Hocus Pocus?","Focus"],
-["Music & media","Besides Hocus Pocus, which instrumental hit did Focus have?","Sylvia"],
-["Music & media","Who released the single Focus in 2015?","Ariana Grande"],
-["Music & media","In which year was FOCUS magazine founded?","1993"],
-["Music & media","Which Marconi Union track is called the most relaxing song?","Weightless"],
-["Music & media","Which 1972 Johnny Nash hit is about seeing clearly?","I Can See Clearly Now"],
-["Music & media","Which film features Eye of the Tiger?","Rocky III"],
-["Music & media","Lose Yourself comes from which film?","8 Mile"],
-["Music & media","Running Up That Hill comes from which album?","Hounds of Love"],
-["Music & media","In which year did Metallica release Master of Puppets?","1986"],
+["Pop culture","Who recorded Bridge over Troubled Water, and when?","Simon and Garfunkel, in 1970"],
+["Pop culture","Which band had a hit with Under the Bridge?","The Red Hot Chili Peppers"],
+["Pop culture","Which 1957 film is about a bridge in Thailand?","The Bridge on the River Kwai"],
+["Pop culture","Which tune is whistled in that film?","The Colonel Bogey March"],
+["Pop culture","Which battle is A Bridge Too Far about?","Arnhem, in Operation Market Garden"],
+["Pop culture","Which bridge features in the film Bridge of Spies?","The Glienicke Bridge"],
+["Pop culture","Who starred in The Bridges of Madison County?","Clint Eastwood and Meryl Streep"],
+["Pop culture","Which Scandinavian crime series is set on a bridge?","The Bridge, Bron or Broen, on the Öresund"],
+["Pop culture","Which nursery rhyme is about a falling bridge?","London Bridge Is Falling Down"],
+["Pop culture","Which actor brothers carry the theme in their surname?","Jeff and Beau Bridges"],
 
-["Recent","Who won the 2026 darts world championship?","Luke Littler, 7-1 against Gian van Veen"],
-["Recent","How much did the 2026 darts world champion win?","One million pounds"],
-["Recent","Who won the 2026 world snooker championship?","Wu Yize, 18-17 against Shaun Murphy"],
-["Recent","Who challenges Gukesh for the chess title in 2026, and where?","Javokhir Sindarov, in Geneva"],
-["Recent","Where were the 2026 Olympic biathlon races held?","Antholz, or Anterselva, in South Tyrol"],
-["Recent","Which cities hosted the 2026 Winter Olympics?","Milan and Cortina d'Ampezzo"],
-["Recent","Which country won the Olympic biathlon mixed relay in 2026?","France"],
-["Recent","Since when are phones banned in Austrian schools up to 8th grade?","1 May 2025"],
-["Recent","Which country banned social media for under-16s in December 2025?","Australia"],
-["Recent","Which minimum age for social media is Austria planning?","Fourteen"],
-["Recent","In which country is Enola Holmes 3 set?","Malta"],
-["Recent","What was Oxford's word of the year 2024?","Brain rot"]
+["Recent","Which bridge is planned to break the span record, and how long would it be?","The Strait of Messina Bridge, with a span of 3,300 m"],
+["Recent","What is holding up the Messina bridge?","Italy's Court of Auditors refused to sign off on the approval"],
+["Recent","When did the world's highest bridge open, and where?","September 2025, in Guizhou in China"],
+["Recent","Which American bridge was destroyed by a container ship in 2024?","The Francis Scott Key Bridge in Baltimore"],
+["Recent","Which German bridge partly collapsed in September 2024?","The Carolabrücke in Dresden"],
+["Recent","Which bridge replaced the collapsed Morandi Bridge, and who designed it?","The San Giorgio Bridge in Genoa, by Renzo Piano"]
 ];
 
-const TCARDS=TOPIC.map(function(t){return [t[0],t[1],t[2],t[2]];});
+/* ===== chapter 3: word bridges — [language, left, answer, right] ===== */
+const WORDS=[
+["English","day","light","house"],
+["English","sun","flower","pot"],
+["English","fire","place","mat"],
+["English","under","ground","work"],
+["English","black","board","room"],
+["English","air","port","hole"],
+["English","sea","food","court"],
+["English","foot","ball","room"],
+["English","hand","book","shelf"],
+["English","key","board","walk"],
+["English","head","light","house"],
+["English","door","bell","boy"],
+["English","moon","light","weight"],
+["English","tooth","brush","stroke"],
+["English","card","board","game"],
+["English","rail","road","block"],
+["English","water","fall","out"],
+["English","gold","fish","tank"],
+["English","snow","ball","park"],
+["English","back","ground","floor"],
+["English","home","work","shop"],
+["English","news","paper","back"],
+["Deutsch","Haus","Tür","Griff"],
+["Deutsch","Feuer","Wehr","Dienst"],
+["Deutsch","Sonnen","Blumen","Topf"],
+["Deutsch","Hand","Schuh","Karton"],
+["Deutsch","Winter","Reifen","Panne"],
+["Deutsch","Kinder","Garten","Zaun"],
+["Deutsch","Fuß","Ball","Spiel"],
+["Deutsch","Apfel","Baum","Haus"],
+["Deutsch","Zahn","Arzt","Praxis"],
+["Deutsch","Nacht","Tisch","Decke"],
+["Deutsch","Brief","Kasten","Wagen"],
+["Deutsch","Schul","Hof","Tor"],
+["Deutsch","Wasser","Fall","Schirm"]
+];
 
-/* ============ engine ============ */
-const KEY="focus-trainer-v2";
-let S={};try{const r=localStorage.getItem(KEY);if(r)S=JSON.parse(r);}catch(e){}
-const save=function(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}};
-const shuffle=function(a){return a.map(function(v){return [Math.random(),v];})
-  .sort(function(x,y){return x[0]-y[0];}).map(function(v){return v[1];});};
 
-function Chapter(id,cards,mount){
-  const box=function(i){return (S[id]&&S[id][i])||1;};
-  const setBox=function(i,v){S[id]=S[id]||{};S[id][i]=v;save();};
-  let cat="All",deck=[],pos=0;
-  const cats=["All"].concat(cards.map(function(c){return c[0];})
-    .filter(function(v,i,a){return a.indexOf(v)===i;}));
-  const inCat=function(i){return cat==="All"||cards[i][0]===cat;};
+/* ===== chapter 4: lateral readings — [category, question, answer] ===== */
+const LATERAL=[
+["Maths & science","Which city's seven bridges gave birth to graph theory?","Königsberg, today Kaliningrad"],
+["Maths & science","Who solved that puzzle, and in which year?","Leonhard Euler, in 1736"],
+["Maths & science","What was the answer to the Königsberg bridge problem?","No such walk exists, crossing each bridge exactly once"],
+["Maths & science","What is a bridge in graph theory?","An edge whose removal splits the graph in two"],
+["Maths & science","Which part of the brainstem is Latin for bridge?","The pons"],
+["Maths & science","What does a bridge rectifier do?","It turns alternating current into direct current, using four diodes"],
+["Maths & science","What is the German name for a hydrogen bond?","Wasserstoffbrückenbindung"],
+["Maths & science","Which bridge in a cell culture connects dividing cells?","The cytoplasmic bridge"],
+["Maths & science","Which land bridge once joined Asia and America?","Beringia, the Bering land bridge"],
+["Maths & science","Which chain of shoals between India and Sri Lanka is called a bridge?","Adam's Bridge, or Rama's Bridge"],
+["Maths & science","Where is Rainbow Bridge, one of the world's largest natural bridges?","Utah, in the United States"],
+["Maths & science","What does bridging anticoagulation mean in medicine?","Switching a patient to a short-acting blood thinner around an operation"],
 
-  function build(){
-    const idxs=cards.map(function(_,i){return i;}).filter(inCat);
-    const w=[];idxs.forEach(function(i){const reps=6-Math.min(box(i),5);for(let k=0;k<reps;k++)w.push(i);});
-    deck=shuffle(w);pos=0;
-  }
-  function catRow(){
-    const row=document.createElement("div");row.className="row";
-    cats.forEach(function(c){
-      const b=document.createElement("button");b.className="btn"+(c===cat?" primary":"");b.textContent=c;
-      b.onclick=function(){cat=c;build();render();};
-      row.appendChild(b);
-    });
-    return row;
-  }
-  function render(){
-    mount.innerHTML="";
-    if(!deck.length)build();
-    const card=document.createElement("div");card.className="card";mount.appendChild(card);
-    const pool=cards.map(function(_,j){return j;}).filter(inCat);
-    const i=deck[pos%deck.length];
-    const learned=pool.filter(function(j){return box(j)>=4;}).length;
-    const head=document.createElement("div");head.className="row spread";
-    head.innerHTML='<span class="pill">'+cards[i][0]+' \u00b7 box '+box(i)+'</span>'+
-      '<span class="muted">'+learned+' of '+pool.length+' in box 4+</span>';
-    const q=document.createElement("div");q.className="q";q.textContent=cards[i][1];
-    const a=document.createElement("div");a.className="a hidden";a.textContent=cards[i][2];
-    const row=document.createElement("div");row.className="row";row.style.marginTop="12px";
-    const bar=document.createElement("div");bar.className="bar";
-    bar.innerHTML='<i style="width:'+(pool.length?learned/pool.length*100:0)+'%"></i>';
-    const mk=function(label,cls,fn){const b=document.createElement("button");b.className="btn "+cls;
-      b.textContent=label;b.onclick=fn;row.appendChild(b);};
-    mk("Reveal","primary",function(){a.classList.remove("hidden");});
-    mk("Knew it","good",function(){setBox(i,Math.min(box(i)+1,5));pos++;if(pos%12===0)build();render();});
-    mk("Missed it","bad",function(){setBox(i,1);pos++;render();});
-    mk("Skip","",function(){pos++;render();});
-    card.append(head,q,a,row,bar);
-    mount.appendChild(catRow());
-  }
-  build();render();
-  return {reset:function(){S[id]={};save();build();render();}};
-}
+["Myth & belief","What is Bifröst in Norse mythology?","The burning rainbow bridge between Midgard and Asgard"],
+["Myth & belief","Which bridge must the dead cross in Zoroastrian belief?","The Chinvat Bridge"],
+["Myth & belief","Which bridge over hell appears in Islamic tradition?","As-Sirat"],
+["Myth & belief","What is the Rainbow Bridge in modern pet lore?","The place where dead pets are said to wait for their owners"],
+["Myth & belief","What does the Latin title Pontifex Maximus mean literally?","Greatest bridge builder"],
+["Myth & belief","Which devil's bridges are common in European legend?","Teufelsbrücken, built by the devil in exchange for the first soul to cross"],
 
-/* ============ photo helper (Wikipedia REST, cached) ============ */
-const IMGKEY="focus-trainer-img";
+["Tech & business","Which Japanese tyre company's name means stone bridge?","Bridgestone, from its founder Shojiro Ishibashi"],
+["Tech & business","Which Adobe program is named after a bridge?","Adobe Bridge"],
+["Tech & business","What does bridge mode do on a router?","It passes the connection through without routing or NAT"],
+["Tech & business","What is a bridge loan?","Short-term finance to span a gap, called Überbrückungskredit in German"],
+["Tech & business","Which classic software design pattern is called Bridge?","The pattern that separates an abstraction from its implementation"],
+["Tech & business","What is a bridging device in a network?","Hardware that joins two segments into a single network"],
+
+["Places & names","Which Austrian city is named after a bridge over a river?","Innsbruck, the bridge over the Inn"],
+["Places & names","Which German state capital's name contains bridges?","Saarbrücken"],
+["Places & names","Which English university city is named after a bridge?","Cambridge, the bridge over the Cam"],
+["Places & names","Which Belgian city's name is related to the word bridge?","Bruges, or Brugge"],
+["Places & names","Which German city is called Osnabrück for which reason?","It grew at a bridge over the river Hase"],
+["Places & names","Which Erfurt bridge is the longest inhabited bridge in Europe?","The Krämerbrücke"],
+["Places & names","Which English city has a bridge lined with shops, the Pulteney Bridge?","Bath"],
+["Places & names","What is a Schwebefähre, as in Rendsburg?","A transporter bridge, which carries a gondola across"],
+["Places & names","Which Rhine bridge became famous in March 1945?","The Ludendorff Bridge at Remagen"],
+["Places & names","Which Paris bridge had its love locks removed in 2015?","The Pont des Arts"],
+
+["Culture","What was the code phrase for the death of Queen Elizabeth II?","London Bridge is down"],
+["Culture","Which Netflix costume drama carries a bridge in its title?","Bridgerton"],
+["Culture","Which novel by Thornton Wilder is about a collapsing rope bridge in Peru?","The Bridge of San Luis Rey"],
+["Culture","Which painter painted a Japanese bridge over his water lily pond?","Claude Monet, at Giverny"],
+["Culture","Which Dutch painter painted the Langlois Bridge in Arles?","Vincent van Gogh"],
+["Culture","Which part of a starship is its bridge?","The command deck"],
+["Culture","Which Hitchcock film opens with a rescue at the Golden Gate Bridge?","Vertigo"],
+["Culture","Which German film of 1959 is about schoolboys defending a bridge?","Die Brücke"],
+["Culture","Which Expressionist group was founded in Dresden in 1905?","Die Brücke"],
+
+["Sport & games","What is the bridge in snooker and billiards?","The hand or rest that supports the cue"],
+["Sport & games","What is a bridge in wrestling?","Arching on head and feet to avoid being pinned"],
+["Sport & games","What is bridging in climbing?","Pressing against two opposite walls, also called stemming"],
+["Sport & games","What is a glute bridge?","Lifting the hips from a lying position, a hip-thrust exercise"],
+["Sport & games","What is the bridge in card shuffling?","Bending the two halves together after a riffle so they fall into place"],
+["Sport & games","What is the bridge on a bowling ball?","The span of material between the finger holes"],
+["Sport & games","Which London bridge do the Boat Race crews pass under?","Hammersmith Bridge"]
+];
+
+/* ===== photo helper: Wikipedia REST, cached in the browser ===== */
+const IMGKEY="bridge-trainer-img";
 let IMG={};try{const r=localStorage.getItem(IMGKEY);if(r)IMG=JSON.parse(r);}catch(e){}
 const imgSave=function(){try{localStorage.setItem(IMGKEY,JSON.stringify(IMG));}catch(e){}};
 function wikiPhoto(title){
@@ -390,29 +432,33 @@ function wikiPhoto(title){
         encodeURIComponent(title)+"?redirect=true")
       .then(function(r){return r.ok?r.json():null;})
       .then(function(j){
-        const src=j&&((j.originalimage&&j.originalimage.width<=2000&&j.originalimage.source)||
+        const src=j&&((j.originalimage&&j.originalimage.width<=2400&&j.originalimage.source)||
                       (j.thumbnail&&j.thumbnail.source));
         if(src){const rec={src:src,page:j.content_urls&&j.content_urls.desktop&&j.content_urls.desktop.page};
           IMG[title]=rec;imgSave();return rec;}
         return tryLang(k+1);
-      })
-      .catch(function(){return tryLang(k+1);});
+      }).catch(function(){return tryLang(k+1);});
   };
   return tryLang(0);
 }
 
-/* ============ chapter 1: people, as photo flashcards ============ */
-function PeopleChapter(mount){
-  const id="people";
+/* ===== shared state ===== */
+const KEY="bridge-trainer-v1";
+let S={};try{const r=localStorage.getItem(KEY);if(r)S=JSON.parse(r);}catch(e){}
+const save=function(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}};
+const shuffle=function(a){return a.map(function(v){return [Math.random(),v];})
+  .sort(function(x,y){return x[0]-y[0];}).map(function(v){return v[1];});};
+
+/* ===== one flashcard engine, three kinds of front side ===== */
+function Chapter(id,items,mount,opts){
   const box=function(i){return (S[id]&&S[id][i])||1;};
   const setBox=function(i,v){S[id]=S[id]||{};S[id][i]=v;save();};
   let cat="All",deck=[],pos=0;
-  const cats=["All"].concat(PEOPLE.map(function(p){return p[2];})
-    .filter(function(v,i,a){return a.indexOf(v)===i;}));
-  const inCat=function(i){return cat==="All"||PEOPLE[i][2]===cat;};
+  const cats=["All"].concat(items.map(opts.group).filter(function(v,i,a){return a.indexOf(v)===i;}));
+  const inCat=function(i){return cat==="All"||opts.group(items[i])===cat;};
 
   function build(){
-    const idxs=PEOPLE.map(function(_,i){return i;}).filter(inCat);
+    const idxs=items.map(function(_,i){return i;}).filter(inCat);
     const w=[];idxs.forEach(function(i){const reps=6-Math.min(box(i),5);for(let k=0;k<reps;k++)w.push(i);});
     deck=shuffle(w);pos=0;
   }
@@ -425,55 +471,91 @@ function PeopleChapter(mount){
     });
     return row;
   }
-  function frame(i){
-    const wrapEl=document.createElement("div");wrapEl.className="photo";
-    const ph=document.createElement("div");ph.className="photo-ph";ph.textContent="loading photo\u2026";
-    wrapEl.appendChild(ph);
-    const credit=document.createElement("div");credit.className="credit";
-    wikiPhoto(PEOPLE[i][3]).then(function(rec){
-      if(!rec){ph.textContent="No photo available";wrapEl.classList.add("nophoto");return;}
-      const im=new Image();im.alt="Photo of a person to identify";im.decoding="async";
-      im.onload=function(){ph.remove();wrapEl.prepend(im);};
-      im.onerror=function(){ph.textContent="No photo available";wrapEl.classList.add("nophoto");};
-      im.src=rec.src;
-      if(rec.page)credit.innerHTML='<a href="'+rec.page+'" target="_blank" rel="noopener">Photo via Wikipedia</a>';
-    });
-    return {el:wrapEl,credit:credit,sharpen:function(){wrapEl.classList.add("sharp");}};
-  }
   function render(){
     mount.innerHTML="";
     if(!deck.length)build();
     const card=document.createElement("div");card.className="card";mount.appendChild(card);
-    const pool=PEOPLE.map(function(_,j){return j;}).filter(inCat);
+    const pool=items.map(function(_,j){return j;}).filter(inCat);
     const i=deck[pos%deck.length];
     const learned=pool.filter(function(j){return box(j)>=4;}).length;
+
     const head=document.createElement("div");head.className="row spread";
-    head.innerHTML='<span class="pill">'+PEOPLE[i][2]+' \u00b7 box '+box(i)+'</span>'+
+    head.innerHTML='<span class="pill">'+opts.group(items[i])+' · box '+box(i)+'</span>'+
       '<span class="muted">'+learned+' of '+pool.length+' in box 4+</span>';
-    const q=document.createElement("div");q.className="q";q.textContent="Who is this?";
-    const f=frame(i);
     const a=document.createElement("div");a.className="a hidden";
-    a.innerHTML="<b>"+PEOPLE[i][0]+"</b><br>"+PEOPLE[i][1].charAt(0).toUpperCase()+PEOPLE[i][1].slice(1);
+    a.innerHTML=opts.back(items[i]);
     const row=document.createElement("div");row.className="row";row.style.marginTop="12px";
     const bar=document.createElement("div");bar.className="bar";
     bar.innerHTML='<i style="width:'+(pool.length?learned/pool.length*100:0)+'%"></i>';
+    const front=opts.front(items[i]);
+
     const mk=function(label,cls,fn){const b=document.createElement("button");b.className="btn "+cls;
       b.textContent=label;b.onclick=fn;row.appendChild(b);};
-    mk("Sharpen","",function(){f.sharpen();});
-    mk("Reveal","primary",function(){f.sharpen();a.classList.remove("hidden");});
+    mk("Reveal","primary",function(){if(front.reveal)front.reveal();a.classList.remove("hidden");});
     mk("Knew it","good",function(){setBox(i,Math.min(box(i)+1,5));pos++;if(pos%12===0)build();render();});
     mk("Missed it","bad",function(){setBox(i,1);pos++;render();});
     mk("Skip","",function(){pos++;render();});
-    card.append(head,q,f.el,f.credit,a,row,bar);
+
+    card.appendChild(head);
+    front.nodes.forEach(function(n){card.appendChild(n);});
+    card.appendChild(a);card.appendChild(row);card.appendChild(bar);
     mount.appendChild(catRow());
   }
   build();render();
-  return {reset:function(){S[id]={};save();build();render();}};
+  return {reset:function(){S[id]={};save();build();render();},rerender:render};
 }
 
-/* chapters and navigation */
+/* chapter 1 front: a photo */
+function photoFront(item){
+  const q=document.createElement("div");q.className="q";q.textContent="What or who is this?";
+  const wrapEl=document.createElement("div");wrapEl.className="photo";
+  const ph=document.createElement("div");ph.className="photo-ph";ph.textContent="loading photo…";
+  wrapEl.appendChild(ph);
+  const credit=document.createElement("div");credit.className="credit";
+  wikiPhoto(item[3]).then(function(rec){
+    if(!rec){ph.textContent="No photo available";wrapEl.classList.add("nophoto");return;}
+    const im=new Image();im.alt="Photo to identify";im.decoding="async";
+    im.onload=function(){ph.remove();wrapEl.prepend(im);};
+    im.onerror=function(){ph.textContent="No photo available";wrapEl.classList.add("nophoto");};
+    im.src=rec.src;
+    if(rec.page)credit.innerHTML='<a href="'+rec.page+'" target="_blank" rel="noopener">Photo via Wikipedia</a>';
+  });
+  return {nodes:[q,wrapEl,credit]};
+}
+
+/* chapter 3 front: the word bridge */
+function wordFront(item){
+  const q=document.createElement("div");q.className="q";q.textContent="Which word bridges the two sides?";
+  const line=document.createElement("div");line.className="wb";
+  line.innerHTML=item[1]+" <span>&middot; ? &middot;</span> "+item[3];
+  return {nodes:[q,line]};
+}
+
+/* ===== build the three chapters ===== */
+const chPics=Chapter("pics",PICS,document.getElementById("pics-app"),{
+  group:function(p){return p[2];},
+  front:photoFront,
+  back:function(p){return "<b>"+p[0]+"</b><br>"+p[1].charAt(0).toUpperCase()+p[1].slice(1);}
+});
+const chTopic=Chapter("topic",TOPIC,document.getElementById("topic-app"),{
+  group:function(t){return t[0];},
+  front:function(t){const q=document.createElement("div");q.className="q";q.textContent=t[1];return {nodes:[q]};},
+  back:function(t){return t[2];}
+});
+const chLateral=Chapter("lateral",LATERAL,document.getElementById("lateral-app"),{
+  group:function(t){return t[0];},
+  front:function(t){const q=document.createElement("div");q.className="q";q.textContent=t[1];return {nodes:[q]};},
+  back:function(t){return t[2];}
+});
+const chWords=Chapter("words",WORDS,document.getElementById("words-app"),{
+  group:function(w){return w[0];},
+  front:wordFront,
+  back:function(w){return "<b>"+w[2]+"</b><br>"+w[1]+w[2].toLowerCase()+" &middot; "+w[2]+w[3].toLowerCase();}
+});
+
+/* ===== navigation ===== */
 const nav=document.getElementById("nav");
-const CH=[["people","1 \u00b7 People"],["topic","2 \u00b7 Topic questions"]];
+const CH=[["pics","1 · Pictures"],["topic","2 · Topic"],["words","3 · Word bridges"]];
 CH.forEach(function(c){
   const b=document.createElement("button");b.className="btn";b.textContent=c[1];b.dataset.v=c[0];
   b.onclick=function(){select(c[0]);};nav.appendChild(b);
@@ -484,11 +566,8 @@ function select(id){
   history.replaceState(null,"","#"+id);window.scrollTo(0,0);
 }
 
-const chPeople=PeopleChapter(document.getElementById("people-app"));
-const chTopic=Chapter("topic",TCARDS,document.getElementById("topic-app"));
-
-const plist=document.getElementById("people-list");
-PEOPLE.forEach(function(p){
+const plist=document.getElementById("pics-list");
+PICS.forEach(function(p){
   const li=document.createElement("li");
   const b=document.createElement("b");b.textContent=p[0];
   const s=document.createElement("span");s.textContent=p[1];
@@ -497,10 +576,10 @@ PEOPLE.forEach(function(p){
 
 document.getElementById("resetall").onclick=function(){
   if(!confirm("Delete all saved progress?"))return;
-  chPeople.reset();chTopic.reset();
+  chPics.reset();chTopic.reset();chLateral.reset();chWords.reset();
 };
 
-select(CH.some(function(c){return c[0]===location.hash.slice(1);})?location.hash.slice(1):"people");
+select(CH.some(function(c){return c[0]===location.hash.slice(1);})?location.hash.slice(1):"pics");
 </script>
 </body>
 </html>
