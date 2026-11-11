@@ -40,8 +40,9 @@ p{margin:.45rem 0}
 /* ---- segmented tab bar, the only fixed chrome ---- */
 .bar{position:sticky;top:0;z-index:30;background:var(--paper);
   padding:calc(8px + env(safe-area-inset-top,0)) 0 8px;border-bottom:1px solid var(--rule)}
-.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;background:var(--wash);
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;background:var(--wash);
   border-radius:9px;padding:3px}
+@media (min-width:600px){.seg{grid-template-columns:repeat(6,1fr)}}
 .seg button{font:600 .86rem/1 inherit;border:0;background:none;color:var(--grey);
   padding:10px 4px;border-radius:7px;cursor:pointer;white-space:nowrap}
 .seg button[aria-current="true"]{background:var(--card);color:var(--ink);
@@ -98,9 +99,17 @@ main{padding:16px 0 40px}
   padding:20px 16px;min-height:4.6em;display:flex;align-items:center}
 .card .ans{padding:16px;border-top:1px solid var(--rule);background:var(--wash);
   font-size:1.02rem;min-height:4.2em;display:flex;align-items:center}
+.card .ans>div{width:100%}
+.card .ans b{display:block;margin-bottom:2px}
 .card .ans.hide{color:transparent;user-select:none}
 .card .ans.hide *{color:transparent!important}
 .card .acts{padding:12px 16px 14px;display:grid;gap:8px}
+.shot{position:relative;width:100%;aspect-ratio:4/3;background:var(--wash);
+  display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--rule)}
+.shot img{width:100%;height:100%;object-fit:cover}
+.shot .ph{padding:16px;text-align:center;color:var(--grey);font-size:.86rem}
+.cred{font-size:.72rem;color:var(--grey);text-align:right;padding:5px 12px 0;min-height:1.1em}
+.cred a{color:var(--grey)}
 .track{height:3px;background:var(--wash)}
 .track i{display:block;height:100%;background:var(--yes);transition:width .3s}
 
@@ -151,6 +160,8 @@ input[type=text]{font:inherit;width:100%;padding:13px 14px;border:1px solid var(
 <main class="wrap">
   <section class="view brief" id="v-brief"></section>
   <section class="view" id="v-cards" hidden></section>
+  <section class="view" id="v-pics" hidden></section>
+  <section class="view" id="v-music" hidden></section>
   <section class="view" id="v-lists" hidden></section>
   <section class="view rapid" id="v-rapid" hidden></section>
   <div class="foot">
@@ -339,6 +350,66 @@ const BRIEF=[
 ["If the theme is really bingo",'<p>The fallback, since the season\'s meta-theme was bingo and he may simply mean it literally.</p><ul><li><b>Ninety balls</b> in Britain, <b>seventy-five</b> in America. The American card is 5×5, columns B-I-N-G-O, free space in the middle.</li><li>It was called <b>beano</b> until a player misshouted; <b>Edwin S. Lowe</b> took the name commercially around 1929.</li><li>Calls: Kelly\'s eye (1), garden gate (8), doctor\'s orders (9), legs eleven (11), two little ducks (22), clickety click (66), two fat ladies (88), top of the shop (90).</li><li>European roulette: <b>37</b> numbers, and they sum to <b>666</b>. Austria plays <b>Lotto 6 aus 45</b>.</li></ul>'],
 ["On the night",'<p>Three habits that cost you points in September, worth more than any extra fact:</p><ul><li>Answer the <b>kind of thing</b> asked. Substance not brand, film not character, club not ground.</li><li>Order questions are marked on the <b>sequence</b>. Six right colours in the wrong order is zero.</li><li>List questions score <b>per item</b>. Write every candidate you have; there is no penalty for a wrong extra.</li></ul>']
 ];
+
+/* ===================== PICTURES: [answer, note, group, wikipedia title, [aliases]] ===================== */
+const PICS=[
+["Common buzzard","Mäusebussard — Austria's most numerous bird of prey","Species","Common buzzard",["mausebussard","buzzard","bussard"]],
+["Common kingfisher","Eisvogel — the blue flash over a stream","Species","Common kingfisher",["eisvogel","kingfisher"]],
+["Common swift","Mauersegler — sleeps and mates on the wing","Species","Common swift",["mauersegler","swift"]],
+["Common blackbird","Amsel — the male is black with a yellow bill","Species","Common blackbird",["amsel","blackbird"]],
+["Common raven","Kolkrabe — the largest of the crow family","Species","Common raven",["kolkrabe","raven","rabe"]],
+["Common cuckoo","Kuckuck — lays its eggs in other birds' nests","Species","Common cuckoo",["kuckuck","cuckoo"]],
+["Common nightingale","Nachtigall — famous for singing after dark","Species","Common nightingale",["nachtigall","nightingale"]],
+["Common starling","Star — the one that flies in murmurations","Species","Common starling",["star","starling"]],
+["Common chaffinch","Buchfink — the most numerous finch in Europe","Species","Common chaffinch",["buchfink","chaffinch","fink"]],
+["Common toad","Erdkröte — warty, unlike the smooth common frog","Species","Common toad",["erdkrote","toad","krote"]],
+["Common frog","Grasfrosch — smooth-skinned, with a dark eye patch","Species","Common frog",["grasfrosch","frog","frosch"]],
+["Common beech","Rotbuche — smooth grey bark, Europe's great forest tree","Species","European beech",["rotbuche","buche","beech"]],
+["Common dandelion","Löwenzahn — the clock you blow seeds from","Species","Taraxacum officinale",["lowenzahn","dandelion"]],
+["Common ivy","Efeu — the climber on old walls","Species","Hedera helix",["efeu","ivy"]],
+["Common chimpanzee","Schimpanse — the bonobo is its closest relative","Species","Chimpanzee",["schimpanse","chimpanzee","chimp"]],
+["Harbour seal","The common seal, Seehund in German","Species","Harbor seal",["common seal","seehund","harbor seal"]],
+["Common octopus","Gewöhnlicher Krake — three hearts and blue blood","Species","Common octopus",["octopus","krake","tintenfisch"]],
+["Common hazel","Haselnuss — catkins in February","Species","Corylus avellana",["haselnuss","hazel","hasel"]],
+
+["Thomas Paine","Wrote the pamphlet Common Sense in 1776","People","Thomas Paine",["paine"]],
+["Lawrence Lessig","Founder of Creative Commons, 2001","People","Lawrence Lessig",["lessig"]],
+["Elinor Ostrom","Showed the commons can be governed; Nobel 2009","People","Elinor Ostrom",["ostrom"]],
+["Garrett Hardin","Wrote The Tragedy of the Commons in 1968","People","Garrett Hardin",["hardin"]],
+["Common","The rapper; Oscar in 2015 for Glory","People","Common (rapper)",["lonnie lynn"]],
+["Jarvis Cocker","Pulp's singer, who wrote Common People","People","Jarvis Cocker",["cocker","pulp"]],
+["Catherine, Princess of Wales","The commoner who married Prince William","People","Catherine, Princess of Wales",["kate middleton","catherine middleton","kate"]],
+["John Legend","Sang Glory with Common","People","John Legend",["legend"]],
+
+["Boston Common","The oldest public park in the United States, 1634","Places","Boston Common",["boston"]],
+["Palace of Westminster","Home of the House of Commons","Places","Palace of Westminster",["westminster","houses of parliament"]],
+["Clapham Common","The London common that gives its name to a Tube station","Places","Clapham Common",["clapham"]],
+["House of Commons chamber","Green benches, 650 seats","Places","House of Commons of the United Kingdom",["house of commons","commons"]],
+
+["Roulette wheel","Thirty-seven numbers in the European version","Chance","Roulette",["roulette"]],
+["Bingo","Ninety balls in Britain, seventy-five in America","Chance","Bingo (British version)",["bingo"]],
+["Playing cards","Fifty-two cards, thirteen ranks, four suits","Chance","Playing card",["cards","spielkarten"]],
+["Dice","Two of them most often total seven","Chance","Dice",["dice","wurfel","würfel"]]
+];
+
+/* ===================== MUSIC: [title, artist, year, clue] ===================== */
+const SONGS=[
+["Common People","Pulp","1995","Britpop about a rich student who wants to live like the poor"],
+["Fanfare for the Common Man","Aaron Copland","1942","American orchestral fanfare opening with timpani and brass"],
+["Fanfare for the Common Man","Emerson, Lake & Palmer","1977","A prog-rock band's synthesiser version of that fanfare"],
+["Everyday People","Sly and the Family Stone","1968","Funk-soul plea for tolerance, source of \"different strokes for different folks\""],
+["Ordinary People","John Legend","2004","Piano-and-voice ballad about an imperfect relationship"],
+["Ordinary World","Duran Duran","1992","Comeback single about carrying on after loss"],
+["Glory","Common and John Legend","2014","Oscar-winning song from the film Selma"],
+["Poker Face","Lady Gaga","2008","Electropop with a stuttered hook about hiding your hand"],
+["The Gambler","Kenny Rogers","1978","Country song of advice from a stranger on a train"],
+["Luck Be a Lady","Frank Sinatra","1965","Show tune from Guys and Dolls, sung before a dice throw"],
+["Ace of Spades","Motörhead","1980","Speed metal with a rattling bassline about gambling"],
+["Viva Las Vegas","Elvis Presley","1964","Title song of a film set among the casinos"],
+["Waterloo","ABBA","1974","Eurovision winner that turned a defeat into a love song"],
+["Material Girl","Madonna","1984","Eighties pop with a Marilyn Monroe homage in its video"]
+];
+
 /* ===================== ENGINE ===================== */
 const el=function(t,c,h){const n=document.createElement(t);if(c)n.className=c;if(h!==undefined)n.innerHTML=h;return n;};
 const $=function(s){return document.querySelector(s);};
@@ -423,7 +494,7 @@ function cards(){
   top.appendChild(el("span","grey",learned+" of "+pool.length+" learned"));
   card.appendChild(top);
   card.appendChild(el("div","q",CARDS[i][1]));
-  const ans=el("div","ans"+(shown?"":" hide"),CARDS[i][2]);
+  const ans=el("div","ans"+(shown?"":" hide"),"<div>"+CARDS[i][2]+"</div>");
   card.appendChild(ans);
   const acts=el("div","acts");
   if(!shown){
@@ -598,8 +669,131 @@ function runRapid(){
   },1000);
   setTimeout(function(){try{inp.focus();}catch(e){}},60);}
 
+
+/* ---------------- wikipedia photos, cached ---------------- */
+const IKEY="common-img";let IMG={};
+try{const r=localStorage.getItem(IKEY);if(r)IMG=JSON.parse(r);}catch(e){}
+function wiki(title){
+  if(!title)return Promise.resolve(null);
+  if(IMG[title]!==undefined)return Promise.resolve(IMG[title]);
+  const L=["en","de"];
+  const go=function(k){
+    if(k>=L.length){IMG[title]=null;try{localStorage.setItem(IKEY,JSON.stringify(IMG));}catch(e){}return null;}
+    return fetch("https://"+L[k]+".wikipedia.org/api/rest_v1/page/summary/"+encodeURIComponent(title)+"?redirect=true")
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(j){
+        const src=j&&((j.thumbnail&&j.thumbnail.source)||(j.originalimage&&j.originalimage.source));
+        if(src){IMG[title]={src:src,page:j.content_urls&&j.content_urls.desktop&&j.content_urls.desktop.page};
+          try{localStorage.setItem(IKEY,JSON.stringify(IMG));}catch(e){}return IMG[title];}
+        return go(k+1);}).catch(function(){return go(k+1);});};
+  return go(0);}
+
+/* ---------------- pictures ---------------- */
+let pcat="All",pdeck=[],ppos=0,pshown=false;
+const pcats=["All"].concat(PICS.map(function(c){return c[2];}).filter(function(v,i,a){return a.indexOf(v)===i;}));
+const pIn=function(i){return pcat==="All"||PICS[i][2]===pcat;};
+const pBox=function(i){return S.box["p"+i]||1;};
+const pSet=function(i,v){S.box["p"+i]=v;save();};
+function pBuild(){
+  const w=[];
+  PICS.map(function(_,i){return i;}).filter(pIn).forEach(function(i){
+    const r=6-Math.min(pBox(i),5);for(let k=0;k<r;k++)w.push(i);});
+  pdeck=shuffle(w);ppos=0;}
+function pics(){
+  const v=$("#v-pics");v.innerHTML="";
+  if(!pdeck.length)pBuild();
+  const pool=PICS.map(function(_,i){return i;}).filter(pIn);
+  const learned=pool.filter(function(i){return pBox(i)>=4;}).length;
+  const i=pdeck[ppos%pdeck.length];
+
+  const bar=el("div","deckbar");
+  pcats.forEach(function(c){
+    const x=el("button");x.textContent=c;x.setAttribute("aria-pressed",c===pcat);
+    x.onclick=function(){pcat=c;pBuild();pshown=false;pics();};bar.appendChild(x);});
+  v.appendChild(bar);
+
+  const card=el("div","card");
+  const top=el("div","top");
+  top.appendChild(el("span","cat",PICS[i][2]));
+  top.appendChild(el("span","grey",learned+" of "+pool.length+" learned"));
+  card.appendChild(top);
+
+  const shot=el("div","shot");
+  const ph=el("div","ph","loading picture…");shot.appendChild(ph);
+  const cred=el("div","cred");
+  wiki(PICS[i][3]).then(function(rec){
+    if(!rec){ph.textContent="no picture available";return;}
+    const im=new Image();im.alt="Picture to identify";im.decoding="async";
+    im.onload=function(){ph.remove();shot.prepend(im);};
+    im.onerror=function(){ph.textContent="no picture available";};
+    im.src=rec.src;
+    if(pshown&&rec.page)cred.innerHTML='<a href="'+rec.page+'" target="_blank" rel="noopener">source: Wikipedia</a>';});
+  card.appendChild(shot);
+  card.appendChild(cred);
+
+  const ans=el("div","ans"+(pshown?"":" hide"),
+    "<div><b>"+PICS[i][0]+"</b>"+PICS[i][1]+"</div>");
+  card.appendChild(ans);
+  const acts=el("div","acts");
+  if(!pshown){
+    const b=el("button","btn go full");b.textContent="Show answer";
+    b.onclick=function(){pshown=true;pics();};acts.appendChild(b);
+    const sk=el("button","btn lite");sk.textContent="Skip this one";
+    sk.onclick=function(){ppos++;pshown=false;pics();};acts.appendChild(sk);
+  }else{
+    const pair=el("div","pair");
+    const y=el("button","btn yes");y.textContent="Knew it";
+    y.onclick=function(){pSet(i,Math.min(pBox(i)+1,5));ppos++;if(ppos%10===0)pBuild();pshown=false;pics();};
+    const n=el("button","btn no");n.textContent="Missed";
+    n.onclick=function(){pSet(i,1);ppos++;pshown=false;pics();};
+    pair.appendChild(y);pair.appendChild(n);acts.appendChild(pair);}
+  card.appendChild(acts);
+  card.appendChild(el("div","track",'<i style="width:'+(pool.length?learned/pool.length*100:0)+'%"></i>'));
+  v.appendChild(card);}
+
+/* ---------------- music ---------------- */
+let mdeck=[],mpos=0,mshown=false;
+const mBox=function(i){return S.box["m"+i]||1;};
+const mSet=function(i,v){S.box["m"+i]=v;save();};
+function mBuild(){
+  const w=[];
+  SONGS.forEach(function(_,i){const r=6-Math.min(mBox(i),5);for(let k=0;k<r;k++)w.push(i);});
+  mdeck=shuffle(w);mpos=0;}
+function music(){
+  const v=$("#v-music");v.innerHTML="";
+  if(!mdeck.length)mBuild();
+  const learned=SONGS.filter(function(_,i){return mBox(i)>=4;}).length;
+  const i=mdeck[mpos%mdeck.length];
+  v.appendChild(el("p","grey","No audio here, so you get the clue instead. On the night he plays the track and wants the title and the artist — practise naming both."));
+  const card=el("div","card");card.style.marginTop="12px";
+  const top=el("div","top");
+  top.appendChild(el("span","cat","Name the song"));
+  top.appendChild(el("span","grey",learned+" of "+SONGS.length+" learned"));
+  card.appendChild(top);
+  card.appendChild(el("div","q",SONGS[i][3]));
+  const ans=el("div","ans"+(mshown?"":" hide"),
+    "<div><b>"+SONGS[i][0]+"</b>"+SONGS[i][1]+", "+SONGS[i][2]+"</div>");
+  card.appendChild(ans);
+  const acts=el("div","acts");
+  if(!mshown){
+    const b=el("button","btn go full");b.textContent="Show title and artist";
+    b.onclick=function(){mshown=true;music();};acts.appendChild(b);
+    const sk=el("button","btn lite");sk.textContent="Skip this one";
+    sk.onclick=function(){mpos++;mshown=false;music();};acts.appendChild(sk);
+  }else{
+    const pair=el("div","pair");
+    const y=el("button","btn yes");y.textContent="Knew both";
+    y.onclick=function(){mSet(i,Math.min(mBox(i)+1,5));mpos++;if(mpos%8===0)mBuild();mshown=false;music();};
+    const n=el("button","btn no");n.textContent="Missed";
+    n.onclick=function(){mSet(i,1);mpos++;mshown=false;music();};
+    pair.appendChild(y);pair.appendChild(n);acts.appendChild(pair);}
+  card.appendChild(acts);
+  card.appendChild(el("div","track",'<i style="width:'+(learned/SONGS.length*100)+'%"></i>'));
+  v.appendChild(card);}
+
 /* ---------------- nav ---------------- */
-const TABS=[["brief","Briefing"],["cards","Cards"],["lists","Lists"],["rapid","Rapid"]];
+const TABS=[["brief","Briefing"],["cards","Cards"],["pics","Pictures"],
+            ["music","Music"],["lists","Lists"],["rapid","Rapid"]];
 const tabs=$("#tabs");
 TABS.forEach(function(t){
   const x=el("button");x.textContent=t[1];x.dataset.v=t[0];
@@ -609,14 +803,16 @@ function select(id){
   tabs.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-current",x.dataset.v===id);});
   if(id==="brief")brief();
   if(id==="cards"){shown=false;cards();}
+  if(id==="pics"){pshown=false;pics();}
+  if(id==="music"){mshown=false;music();}
   if(id==="lists")lists();
   if(id==="rapid")rapid();
   try{history.replaceState(null,"","#"+id);}catch(e){}
   window.scrollTo(0,0);}
 $("#wipe").onclick=function(){
   if(!confirm("Delete all progress and best scores?"))return;
-  S={box:{},best:{}};save();buildDeck();select("brief");};
-buildDeck();
+  S={box:{},best:{}};save();buildDeck();pBuild();mBuild();select("brief");};
+buildDeck();pBuild();mBuild();
 select(TABS.some(function(t){return t[0]===location.hash.slice(1);})?location.hash.slice(1):"brief");
 </script>
 </body>

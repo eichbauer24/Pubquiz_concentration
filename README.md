@@ -14,6 +14,11 @@ each device.
   land in, plus three habits worth more than any extra fact.
 - **Cards** — 130 flashcards with Leitner boxes, in five categories: most common,
   the commons, common names, bingo, culture.
+- **Pictures** — 34 photo cards: the "common"-named species, the people behind
+  the commons, the places, and the objects of chance. Images load from Wikipedia
+  at runtime and are cached, so the first run needs a connection.
+- **Music** — 14 songs as clue cards. The app cannot play audio, so you get a
+  description, the way the host's round works in reverse.
 - **Lists** — eight timed "name as many as you can" challenges. These score per
   item on the night, which is why they are worth practising against a clock.
 - **Rapid** — 90 seconds of typed recall across the whole deck.
@@ -67,6 +72,8 @@ of each card row is a list of accepted alternative answers, which is what makes
 the typed drills forgiving:
 
 - `CARDS` — `["Category", "Question", "Answer", ["alias", …]]`
+- `PICS` — `["Answer", "note shown after", "Group", "Wikipedia title", ["alias", …]]`
+- `SONGS` — `["Title", "Artist", "Year", "the clue"]`
 - `LISTS` — `{t: "title", s: seconds, i: [["Item", ["alias", …]], …]}`
 - `BRIEF` — `["Section heading", "<p>HTML body</p>"]`
 
